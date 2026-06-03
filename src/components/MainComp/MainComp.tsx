@@ -1,10 +1,9 @@
 
 
-function MainComp() {
-    <div>
-        
+export default function MainComp() {
+   return (<div>
+
     </div>
+   )
 }
 
-
-export default MainComp
