@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import allSvg from "../../assets/svg/AllSvg"
+import { useState } from "react";
+import DropMenu from "./NavComp.DropMenu/DropMenu";
 
 export default function NavComp() {
 
+    const [dropMenuState, setDropMenuState] = useState(false);
     const dropMenu = allSvg().dropMenu;
     const gitHub = allSvg(30).gitHub;
 
@@ -19,10 +22,16 @@ export default function NavComp() {
           </div>
           <button
             type="button"
-            className="items-center hover:text-orange-700 ease-in-out duration-300 cursor-pointer"
+            className={`items-center hover:text-orange-700 ease-in-out duration-300 cursor-pointer ${dropMenuState ? "rotate-90" : ""}`}
+            onClick={() => {
+              setDropMenuState(!dropMenuState);
+            }}
           >
             {dropMenu}
           </button>
+        </div>
+        <div className={`absolute right-0 top-4`}>
+        {DropMenu()}
         </div>
       </div>
     );
