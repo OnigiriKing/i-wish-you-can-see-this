@@ -1,14 +1,28 @@
 import { Link } from "react-router-dom";
-export default function DropMenu() {
-  const linkStyle: string =
+import type { Dispatch, SetStateAction } from "react";
+
+type DropMenuProps = {
+  setDropMenuState: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function DropMenu({ setDropMenuState }: DropMenuProps) {
+  const linkStyle =
     "rounded-xl px-6 py-3 text-lg font-medium text-zinc-800 transition hover:bg-zinc-100 text-center";
 
   return (
-    <nav className="w-40 rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur flex-col flex absolute right-4 top-16 z-50">
-      <Link to={"/"} className={linkStyle}>
+    <nav className="absolute right-4 top-16 z-50 flex w-40 flex-col rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur">
+      <Link
+        to={"/"}
+        className={linkStyle}
+        onClick={() => setDropMenuState(false)}
+      >
         Legal
       </Link>
-      <Link to={"/"} className={linkStyle}>
+      <Link
+        to={"/"}
+        className={linkStyle}
+        onClick={() => setDropMenuState(false)}
+      >
         Contact
       </Link>
     </nav>

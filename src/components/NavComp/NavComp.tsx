@@ -11,7 +11,7 @@ export default function NavComp() {
 
   return (
     <>
-      <div className=" w-full h-16 flex items-center justify-between px-20 z-100">
+      <header className="relative w-full h-16 flex items-center justify-between px-20 z-50">
         <Link to="/" className="text-2xl">
           I wish you can read this
         </Link>
@@ -19,14 +19,14 @@ export default function NavComp() {
           <div>
             <Link
               to="https://github.com/OnigiriKing"
-              className={`transition hover:text-${mainColor} ease-in-out duration-300`}
+              className={`transition hover:text-zinc-400 ease-in-out duration-300`}
             >
               {gitHub}
             </Link>
           </div>
           <button
             type="button"
-            className={`items-center hover:text-${mainColor} ease-in-out duration-300 cursor-pointer ${dropMenuState ? "rotate-90" : ""}`}
+            className={`items-center hover:text-${mainColor} ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
             onClick={() => {
               setDropMenuState((dropMenuState) => !dropMenuState);
             }}
@@ -34,10 +34,12 @@ export default function NavComp() {
             {dropMenu}
           </button>
         </div>
-      </div>
-      {dropMenuState && <DropMenu />}
+      </header>
+      {dropMenuState && (
+        <DropMenu
+          setDropMenuState={setDropMenuState}
+        />
+      )}
     </>
   );
 }
-
-//${dropMenuState ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}
