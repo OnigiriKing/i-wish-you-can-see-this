@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import allSvg from "../../assets/svg/AllSvg";
 import { renderToStaticMarkup } from "react-dom/server";
+import testMessageData from "../../assets/testData/testMessageData";
 
 const markerSvg = renderToStaticMarkup(allSvg(40).marker);
 
@@ -24,6 +25,16 @@ export default function MainComp() {
         attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      {testMessageData.map((message) => (
+         <Marker position={[message.latitude, message.longitude]} key={message.id} icon={customIcon}>
+           <Popup>
+             <p>{message.sender}</p>
+
+             <p>{message.message}
+             </p>
+           </Popup>
+         </Marker>
+      ))}
 
       <Marker position={[35.6762, 139.6503]} icon={customIcon}>
         <Popup>
