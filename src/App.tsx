@@ -1,6 +1,7 @@
 import NavComp from "./components/NavComp/NavComp";
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import "leaflet/dist/leaflet.css";
 
   const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 
