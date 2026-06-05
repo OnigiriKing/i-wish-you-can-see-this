@@ -2,12 +2,15 @@ import { Link } from "react-router-dom";
 import allSvg from "../../assets/svg/AllSvg";
 import { useState } from "react";
 import DropMenu from "./NavComp.DropMenu/DropMenu";
-import mainColor from "../../assets/style/colours";
+import LanguageMenu from "./NavComp.LanguageMenu/LangaugeMenu";
 
 export default function NavComp() {
   const [dropMenuState, setDropMenuState] = useState(false);
+  const [languageMenuState, setLanguageMenuState] = useState(false);
   const dropMenu = allSvg().dropMenu;
   const gitHub = allSvg(30).gitHub;
+  const languageList = allSvg(32).languageList;
+  const arrowDown = allSvg(21).arrowDown;
 
   return (
     <>
@@ -25,8 +28,16 @@ export default function NavComp() {
             </Link>
           </div>
           <button
+            className="items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 flex flex-row"
+            onClick={() =>
+              setLanguageMenuState((languageMenuState) => !languageMenuState)
+            }
+          >
+            {languageList} {languageMenuState ? arrowDown : "EN"}
+          </button>
+          <button
             type="button"
-            className={`items-center hover:text-${mainColor} ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
+            className={`items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
             onClick={() => {
               setDropMenuState((dropMenuState) => !dropMenuState);
             }}
@@ -35,10 +46,9 @@ export default function NavComp() {
           </button>
         </div>
       </header>
-      {dropMenuState && (
-        <DropMenu
-          setDropMenuState={setDropMenuState}
-        />
+      {dropMenuState && <DropMenu setDropMenuState={setDropMenuState} />}
+      {languageMenuState && (
+        <LanguageMenu setLanguageMenuState={setLanguageMenuState} />
       )}
     </>
   );
