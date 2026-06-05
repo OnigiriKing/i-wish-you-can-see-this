@@ -35,14 +35,6 @@ export default function MainComp() {
            </Popup>
          </Marker>
       ))}
-
-      <Marker position={[35.6762, 139.6503]} icon={customIcon}>
-        <Popup>
-          <p>Someone</p>
-
-          <p>I wish I told you how much you meant to me.</p>
-        </Popup>
-      </Marker>
     </MapContainer>
   );
 }
