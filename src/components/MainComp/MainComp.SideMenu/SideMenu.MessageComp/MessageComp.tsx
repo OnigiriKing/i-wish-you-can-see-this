@@ -9,9 +9,12 @@ export default function MessageComp() {
     <div className="flex h-full flex-col">
       {/* actual text content */}
       <header className="border-b border-zinc-200 p-4">
-        <div>
+        <div className="mx-4 flex flex-row justify-between">
           <div>{datePhone}</div>
-          <div></div>
+          <div className="flex gap-1"> 
+            <div> Hello</div>
+            <div>world</div>
+          </div>
         </div>
         <p className="text-center font-semibold my-7">Mom</p>
 
