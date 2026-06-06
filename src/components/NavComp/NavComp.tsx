@@ -23,7 +23,7 @@ export default function NavComp() {
             <Link
               to="https://github.com/OnigiriKing"
               target="_blank"
-              className={`transition hover:text-zinc-400 ease-in-out duration-300`}
+              className="transition hover:text-zinc-400 ease-in-out duration-300"
             >
               {gitHub}
             </Link>
