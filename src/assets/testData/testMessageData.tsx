@@ -21,7 +21,7 @@ const testMessageData: Message[] = [
     id: "message2",
     sender: "Marry",
     receiver: "mom",
-    message: "I wish you were here",
+    message: "I hope you are happy right now, wherever you are happy and doing fine. I wish I can be with you and hug you",
     latitude: 34.7025,
     longitude: 135.4959,
   },

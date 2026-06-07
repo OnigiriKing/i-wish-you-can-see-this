@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import testMessageData from "../../../assets/testData/testMessageData";
 import type { Dispatch, SetStateAction } from "react";
 
-type SideMenuProps = {
+type MapCompProps = {
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
 };
@@ -20,7 +20,7 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
-export default function MapComp({ setSideMenuState, setSelectedMessageId }: SideMenuProps) {
+export default function MapComp({ setSideMenuState, setSelectedMessageId }: MapCompProps) {
   return (
     <MapContainer
       center={[35.6762, 139.6503]}
@@ -38,18 +38,28 @@ export default function MapComp({ setSideMenuState, setSelectedMessageId }: Side
           icon={customIcon}
         >
           <Popup>
-            <p>{message.sender}</p>
-
-            <p>{message.message}</p>
-            <button
-              className="cursor-pointer"
-              onClick={() => {
-                setSideMenuState(true);
-                setSelectedMessageId(message.id);
-              }}
-            >
-              Open message
-            </button>
+            <div className="flex flex-col gap-2 mb-2">
+              <div className="flex flex-col gap-1 border-b border-zinc-300 font-semibold pb-1">
+                <div className="">{message.sender}</div>
+                <div>To {message.receiver}</div>
+              </div>
+              <div className="text-[15px]">
+                {message.message.length > 40
+                  ? message.message.slice(0, 40) + "..."
+                  : message.message}
+              </div>
+            </div>
+            <div className="w-full items-center justify-center flex">
+              <button
+                className="cursor-pointer rounded-xl p-2 font-medium text-zinc-800 transition hover:bg-zinc-100 text-center border-zinc-200 border"
+                onClick={() => {
+                  setSideMenuState(true);
+                  setSelectedMessageId(message.id);
+                }}
+              >
+                Open message
+              </button>
+            </div>
           </Popup>
         </Marker>
       ))}
