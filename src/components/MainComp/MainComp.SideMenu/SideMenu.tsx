@@ -5,14 +5,12 @@ import type { Message } from "../../../assets/testData/testMessageData";
 
 const crossButton = allSvg(30).crossButton;
 
-
 type SideMenuProps = {
   sideMenuState: boolean;
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
-  selectedMessage: Message | undefined ;
+  selectedMessage: Message | undefined;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
 };
-
 
 export default function SideMenu({
   sideMenuState,
