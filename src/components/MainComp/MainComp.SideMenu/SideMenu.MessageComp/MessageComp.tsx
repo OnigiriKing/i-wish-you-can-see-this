@@ -1,19 +1,26 @@
+import allSvg from "../../../../assets/svg/AllSvg";
+
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
 });
 
+const wifiIcon = allSvg(22).wifiIcon;
+const signalIcon = allSvg(22).signalIcon;
+const batteryIcon = allSvg(25).batteryIcon;
+
 export default function MessageComp() {
   return (
     <div className="flex h-full flex-col">
       {/* actual text content */}
       <header className="border-b border-zinc-200 p-4">
-        <div className="mx-4 flex flex-row justify-between">
-          <div>{datePhone}</div>
-          <div className="flex gap-1"> 
-            <div> Hello</div>
-            <div>world</div>
+        <div className="mx-4 flex flex-row justify-between items-center align-middle">
+          <div className="font-semibold text-[1.1rem]">{datePhone}</div>
+          <div className="flex gap-1.5 items-center align-middle">
+            <div>{signalIcon}</div>
+            <div>{wifiIcon}</div>
+            <div>{batteryIcon}</div>
           </div>
         </div>
         <p className="text-center font-semibold my-7">Mom</p>

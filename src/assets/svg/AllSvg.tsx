@@ -195,7 +195,35 @@ export default function allSvg(width: number | string = 24): IconMap {
         />
       </svg>
     ),
+    wifiIcon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={width}
+        viewBox="0 0 24 24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          fill="currentColor"
+          d="M10.225 20.275Q9.5 19.55 9.5 18.5t.725-1.775T12 16t1.775.725t.725 1.775t-.725 1.775T12 21t-1.775-.725M6.35 15.35l-2.1-2.15q1.475-1.475 3.463-2.337T12 10t4.288.875t3.462 2.375l-2.1 2.1q-1.1-1.1-2.55-1.725T12 13t-3.1.625t-2.55 1.725M2.1 11.1L0 9q2.3-2.35 5.375-3.675T12 4t6.625 1.325T24 9l-2.1 2.1q-1.925-1.925-4.462-3.012T12 7T6.563 8.088T2.1 11.1"
+        />
+      </svg>
+    ),
+    signalIcon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={width}
+        viewBox="0 0 24 24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          fill="currentColor"
+          d="M3 21h3v-3H3m5 3h3v-7H8m5 7h3V9h-3m5 12h3V3h-3z"
+        />
+      </svg>
+    ),
   } satisfies IconMap;
 
   return svg;
-  }
+}
