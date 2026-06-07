@@ -37,11 +37,12 @@ export default function MapComp({ setSideMenuState, setSelectedMessageId }: MapC
           key={message.id}
           icon={customIcon}
         >
-          <Popup>
+          <Popup className="max-w-50">
             <div className="flex flex-col gap-2 mb-2">
               <div className="flex flex-col gap-1 border-b border-zinc-300 font-semibold pb-1">
-                <div className="">{message.sender}</div>
-                <div>To {message.receiver}</div>
+                <div className="text-[14px]">{message.sender}</div>
+                <div>To: {message.receiver}</div>
+                <div>date</div>
               </div>
               <div className="text-[15px]">
                 {message.message.length > 40
@@ -51,7 +52,7 @@ export default function MapComp({ setSideMenuState, setSelectedMessageId }: MapC
             </div>
             <div className="w-full items-center justify-center flex">
               <button
-                className="cursor-pointer rounded-xl p-2 font-medium text-zinc-800 transition hover:bg-zinc-100 text-center border-zinc-200 border"
+                className="cursor-pointer rounded-xl px-4 py-1.5 font-medium text-zinc-800 transition hover:bg-zinc-100 text-center border-zinc-200 border"
                 onClick={() => {
                   setSideMenuState(true);
                   setSelectedMessageId(message.id);
