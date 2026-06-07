@@ -9,7 +9,9 @@ const datePhone = new Date().toLocaleTimeString([], {
 const wifiIcon = allSvg(22).wifiIcon;
 const signalIcon = allSvg(22).signalIcon;
 const batteryIcon = allSvg(25).batteryIcon;
-const crossButton = allSvg(22).crossButton;
+const crossButton = allSvg(21).crossButton;
+const microphoneIcon = allSvg(22).microphoneIcon;
+const avatarIcon = allSvg(50).avatarIcon;
 
 export default function MessageComp() {
   return (
@@ -24,23 +26,26 @@ export default function MessageComp() {
             <div>{batteryIcon}</div>
           </div>
         </div>
-        <p className="text-center font-semibold my-7">Mom</p>
-
-        <p className="text-center text-xs text-zinc-500">Today 22:15</p>
+        <div className="mt-3 justify-center items-center text-center flex flex-col gap-1">
+          <div className="text-[#8A94A6]">{avatarIcon}</div>
+          <p className="text-center font-semibold">From: </p>
+          <p className="text-center font-semibold">To: </p>
+          <p className="text-center text-xs text-zinc-500">Today 22:15</p>
+        </div>
       </header>
 
-      <main className="flex-1 p-4">
-        <div className="ml-auto max-w-[80%] rounded-3xl bg-blue-500 px-4 py-3 text-white rounded-br-xs mb-6">
+      <main className="flex flex-col flex-1 p-4 justify-end my-4">
+        <div className="ml-auto max-w-[80%] rounded-3xl bg-[#007AFF] px-4 py-3 text-white rounded-br-md mb-6">
           I wish I told you how much you meant to me.
         </div>
-        <div className="flex flex-row gap-2">
-          <div className="p-1.5 rounded-4xl bg-gray-200 rotate-45">
+        <div className="flex flex-row gap-2 mx-1">
+          <div className="p-1.5 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
             {crossButton}
           </div>
-          <div className="p-1.5 rounded-4xl bg-gray-200 flex w-full">
-            <div className="mx-2">
-            <div className="text-gray-400">iMessage</div>
-            <div></div>
+          <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm">
+            <div className="mx-2 flex justify-between w-full text-gray-400">
+              <div className="cursor-default">iMessage</div>
+              <div>{microphoneIcon}</div>
             </div>
           </div>
         </div>
