@@ -3,6 +3,11 @@ import L from "leaflet";
 import allSvg from "../../../assets/svg/AllSvg";
 import { renderToStaticMarkup } from "react-dom/server";
 import testMessageData from "../../../assets/testData/testMessageData";
+import type { Dispatch, SetStateAction } from "react";
+
+type SideMenuProps = {
+  setSideMenuState: Dispatch<SetStateAction<boolean>>;
+};
 
 const markerSvg = renderToStaticMarkup(allSvg(40).marker);
 
@@ -14,7 +19,7 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
-export default function MapComp() {
+export default function MapComp({setSideMenuState}: SideMenuProps) {
   return (
     <MapContainer
       center={[35.6762, 139.6503]}
@@ -35,6 +40,9 @@ export default function MapComp() {
             <p>{message.sender}</p>
 
             <p>{message.message}</p>
+            <button className="cursor-pointer" onClick={() => setSideMenuState(true)}>
+              Open message
+            </button>
           </Popup>
         </Marker>
       ))}
