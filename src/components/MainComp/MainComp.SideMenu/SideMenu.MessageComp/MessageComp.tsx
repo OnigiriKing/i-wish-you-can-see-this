@@ -9,6 +9,7 @@ const datePhone = new Date().toLocaleTimeString([], {
 const wifiIcon = allSvg(22).wifiIcon;
 const signalIcon = allSvg(22).signalIcon;
 const batteryIcon = allSvg(25).batteryIcon;
+const crossButton = allSvg(22).crossButton;
 
 export default function MessageComp() {
   return (
@@ -29,10 +30,20 @@ export default function MessageComp() {
       </header>
 
       <main className="flex-1 p-4">
-        <div className="ml-auto max-w-[80%] rounded-3xl bg-blue-500 px-4 py-3 text-white">
+        <div className="ml-auto max-w-[80%] rounded-3xl bg-blue-500 px-4 py-3 text-white rounded-br-xs mb-6">
           I wish I told you how much you meant to me.
         </div>
-        <div></div>
+        <div className="flex flex-row gap-2">
+          <div className="p-1.5 rounded-4xl bg-gray-200 rotate-45">
+            {crossButton}
+          </div>
+          <div className="p-1.5 rounded-4xl bg-gray-200 flex w-full">
+            <div className="mx-2">
+            <div className="text-gray-400">iMessage</div>
+            <div></div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
