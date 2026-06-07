@@ -1,10 +1,15 @@
 import allSvg from "../../../../assets/svg/AllSvg";
+import type { Message } from "../../../../assets/testData/testMessageData";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
 });
+
+type MessageCompProps = {
+  selectMessageId: Message | undefined;
+};
 
 const wifiIcon = allSvg(22).wifiIcon;
 const signalIcon = allSvg(22).signalIcon;
@@ -13,7 +18,7 @@ const crossButton = allSvg(21).crossButton;
 const microphoneIcon = allSvg(22).microphoneIcon;
 const avatarIcon = allSvg(50).avatarIcon;
 
-export default function MessageComp() {
+export default function MessageComp({ selectedMessage }: MessageCompProps) {
   return (
     <div className="flex h-full flex-col">
       {/* actual text content */}

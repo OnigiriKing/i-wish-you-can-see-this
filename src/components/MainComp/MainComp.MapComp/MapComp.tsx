@@ -7,6 +7,7 @@ import type { Dispatch, SetStateAction } from "react";
 
 type SideMenuProps = {
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
+  setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
 };
 
 const markerSvg = renderToStaticMarkup(allSvg(40).marker);
@@ -19,7 +20,7 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
-export default function MapComp({setSideMenuState}: SideMenuProps) {
+export default function MapComp({ setSideMenuState, setSelectedMessageId }: SideMenuProps) {
   return (
     <MapContainer
       center={[35.6762, 139.6503]}
@@ -40,7 +41,13 @@ export default function MapComp({setSideMenuState}: SideMenuProps) {
             <p>{message.sender}</p>
 
             <p>{message.message}</p>
-            <button className="cursor-pointer" onClick={() => setSideMenuState(true)}>
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                setSideMenuState(true);
+                setSelectedMessageId(message.id);
+              }}
+            >
               Open message
             </button>
           </Popup>
