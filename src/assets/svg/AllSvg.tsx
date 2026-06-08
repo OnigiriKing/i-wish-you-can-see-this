@@ -255,6 +255,20 @@ export default function allSvg(width: number | string = 24): IconMap {
         />
       </svg>
     ),
+    arrowUpIcon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={width}
+        viewBox="0 0 24 24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          fill="currentColor"
+          d="M13 20h-2V8l-5.5 5.5l-1.42-1.42L12 4.16l7.92 7.92l-1.42 1.42L13 8z"
+        />
+      </svg>
+    ),
   } satisfies IconMap;
 
   return svg;
