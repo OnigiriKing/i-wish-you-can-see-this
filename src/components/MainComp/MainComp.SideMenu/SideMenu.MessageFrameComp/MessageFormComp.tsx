@@ -73,10 +73,10 @@ export default function MessageFormComp() {
           <div className="p-1.5 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
             {crossButton}
           </div>
-          <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm">
-            <input
-              className="cursor-default w-full rounded-4xl px-2 mr-2 outline-none"
-              type="text"
+          <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm ">
+            <textarea
+              className="cursor-default w-full rounded-4xl px-2 mr-2 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
+              rows={1}
               placeholder="iMessage"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -84,7 +84,10 @@ export default function MessageFormComp() {
             {message === "" ? (
               <div className="text-gray-400">{microphoneIcon}</div>
             ) : (
-              <button className="px-1.5 text-white bg-[#007AFF] rounded-3xl">
+              <button
+                type="submit"
+                className="px-1.5 text-white bg-[#007AFF] rounded-3xl cursor-pointer"
+              >
                 {arrowUpIcon}
               </button>
             )}
