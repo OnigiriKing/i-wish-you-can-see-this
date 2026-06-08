@@ -21,6 +21,11 @@ export default function MessageFormComp() {
   const [receiver, setReceiver] = useState("");
   const [message, setMessage] = useState("");
 
+    function resizeTextarea(textarea: HTMLTextAreaElement) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 112)}px`;
+    }
+
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -29,6 +34,7 @@ export default function MessageFormComp() {
       receiver,
       message,
     };
+
   }
   return (
     <form className="flex h-full flex-col" onSubmit={handleSubmit}>
@@ -81,7 +87,10 @@ export default function MessageFormComp() {
               rows={1}
               placeholder="iMessage"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value)
+                resizeTextarea(e.currentTarget)
+              }}
             />
             {message === "" ? (
               <div className="text-gray-400">{microphoneIcon}</div>
