@@ -45,21 +45,23 @@ export default function MessageFormComp() {
         <div className="mt-3 justify-center items-center text-center flex flex-col gap-1">
           <div className="text-[#8A94A6]">{avatarIcon}</div>
           {/* from field */}
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             <label className="text-center font-semibold">From:</label>
             <input
-              className="w-20"
+              className="w-20 outline-none border-b"
               type="text"
+              placeholder="Name"
               value={sender}
               onChange={(e) => setSender(e.target.value)}
             />
           </div>
           {/* to field */}
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             <label className="text-center font-semibold">To:</label>
             <input
-              className="w-20"
+              className="w-20 outline-none border-b"
               type="text"
+              placeholder="Her/Him"
               value={receiver}
               onChange={(e) => setReceiver(e.target.value)}
             />
@@ -69,7 +71,7 @@ export default function MessageFormComp() {
       </header>
 
       <main className="flex flex-col flex-1 p-4 justify-end my-4">
-        <div className="flex flex-row gap-2 mx-1">
+        <div className="flex flex-row gap-2 mx-1 items-end">
           <div className="p-1.5 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
             {crossButton}
           </div>
