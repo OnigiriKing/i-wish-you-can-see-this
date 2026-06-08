@@ -1,4 +1,6 @@
 import allSvg from "../../../../assets/svg/AllSvg";
+import { useState } from "react";
+import type { SubmitEvent } from "react";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
@@ -14,9 +16,22 @@ const microphoneIcon = allSvg(22).microphoneIcon;
 const arrowUpIcon = allSvg(22).arrowUpIcon;
 const avatarIcon = allSvg(50).avatarIcon;
 
-export default function MessageFormComo() {
+export default function MessageFormComp() {
+  const [sender, setSender] = useState("");
+  const [receiver, setReceiver] = useState("");
+  const [message, setMessage] = useState("");
+
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const newMessage = {
+      sender,
+      receiver,
+      message,
+    };
+  }
   return (
-    <form className="flex h-full flex-col">
+    <form className="flex h-full flex-col" onSubmit={handleSubmit}>
       {/* actual text content */}
       <header className="border-b border-zinc-200 p-4">
         <div className="mx-4 flex flex-row justify-between items-center align-middle">
@@ -32,12 +47,22 @@ export default function MessageFormComo() {
           {/* from field */}
           <div className="flex gap-1">
             <label className="text-center font-semibold">From:</label>
-            <input className="w-20" type="text" />
+            <input
+              className="w-20"
+              type="text"
+              value={sender}
+              onChange={(e) => setSender(e.target.value)}
+            />
           </div>
           {/* to field */}
           <div className="flex gap-1">
             <label className="text-center font-semibold">To:</label>
-            <input className="w-20" type="text" />
+            <input
+              className="w-20"
+              type="text"
+              value={receiver}
+              onChange={(e) => setReceiver(e.target.value)}
+            />
           </div>
           <p className="text-center text-xs text-zinc-500">Today 22:15</p>
         </div>
@@ -50,10 +75,19 @@ export default function MessageFormComo() {
           </div>
           <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm">
             <input
-              className="cursor-default w-full rounded-4xl px-2 mr-2"
+              className="cursor-default w-full rounded-4xl px-2 mr-2 outline-none"
               type="text"
+              placeholder="iMessage"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
-            <div className="text-gray-400">{microphoneIcon}</div>
+            {message === "" ? (
+              <div className="text-gray-400">{microphoneIcon}</div>
+            ) : (
+              <button className="px-1.5 text-white bg-[#007AFF] rounded-3xl">
+                {arrowUpIcon}
+              </button>
+            )}
           </div>
         </div>
       </main>

@@ -2,7 +2,7 @@ import allSvg from "../../../assets/svg/AllSvg";
 import MessageComp from "./SideMenu.MessageFrameComp/MessageComp";
 import type { Dispatch, SetStateAction } from "react";
 import type { Message } from "../../../assets/testData/testMessageData";
-import MessageFormComo from "./SideMenu.MessageFrameComp/MessageFormComp";
+import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
 
 const crossButton = allSvg(30).crossButton;
 
@@ -38,7 +38,7 @@ export default function SideMenu({
           <div className="device-content bg-white w-full h-full rounded-[3rem]">
             {/* content container */}
             {/* <MessageComp selectedMessage={selectedMessage} /> */}
-            <MessageFormComo />
+            <MessageFormComp />
           </div>
         </div>
 
