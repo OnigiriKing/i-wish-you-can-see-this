@@ -26,14 +26,18 @@ export default function MessageFormComp() {
       textarea.style.height = `${Math.min(textarea.scrollHeight, 512)}px`;
     }
 
+    const isSubmitDisabled = sender.trim() === "" || receiver.trim() === "" || message.trim() === "";
+
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const newMessage = {
-      sender,
-      receiver,
-      message,
-    };
+    if (isSubmitDisabled) return;
+    
+      const newMessage = {
+        sender,
+        receiver,
+        message,
+      };
 
   }
   return (
@@ -83,13 +87,13 @@ export default function MessageFormComp() {
           </div>
           <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm ">
             <textarea
-              className="cursor-default w-full rounded-4xl px-4 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
+              className="w-full rounded-4xl px-4 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
               rows={1}
               placeholder="iMessage"
               value={message}
               onChange={(e) => {
-                setMessage(e.target.value)
-                resizeTextarea(e.currentTarget)
+                setMessage(e.target.value);
+                resizeTextarea(e.currentTarget);
               }}
             />
             {message === "" ? (
