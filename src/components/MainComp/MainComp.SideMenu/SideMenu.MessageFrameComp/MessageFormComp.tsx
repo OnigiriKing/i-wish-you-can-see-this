@@ -23,7 +23,7 @@ export default function MessageFormComp() {
 
     function resizeTextarea(textarea: HTMLTextAreaElement) {
       textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 112)}px`;
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 512)}px`;
     }
 
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
@@ -83,7 +83,7 @@ export default function MessageFormComp() {
           </div>
           <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm ">
             <textarea
-              className="cursor-default w-full rounded-4xl px-2 mr-2 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
+              className="cursor-default w-full rounded-4xl px-4 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
               rows={1}
               placeholder="iMessage"
               value={message}
@@ -97,7 +97,7 @@ export default function MessageFormComp() {
             ) : (
               <button
                 type="submit"
-                className="px-1.5 text-white bg-[#007AFF] rounded-3xl cursor-pointer"
+                className="px-1.5 text-white bg-[#007AFF] rounded-3xl cursor-pointer max-h-6 self-end"
               >
                 {arrowUpIcon}
               </button>
