@@ -9,6 +9,14 @@ export default function MainComp() {
     null,
   );
 
+  // create message states
+  const [chooseLocationMode, setChooseLocationMode] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+  const [sideMenuMode, setSideMenuMode] = useState<"view" | "create">("view");
+
   const selectedMessage = testMessageData.find(
     (message) => message.id === selectedMessageId,
   );
