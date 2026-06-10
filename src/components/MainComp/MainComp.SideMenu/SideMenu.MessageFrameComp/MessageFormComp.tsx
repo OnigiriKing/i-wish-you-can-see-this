@@ -58,9 +58,11 @@ export default function MessageFormComp() {
           <div className="flex gap-2">
             <label className="text-center font-semibold">From:</label>
             <input
-              className="w-20 outline-none border-b"
+              className="w-23 outline-none border-b"
               type="text"
               placeholder="Name"
+              maxLength={12}
+              required
               value={sender}
               onChange={(e) => setSender(e.target.value)}
             />
@@ -69,9 +71,11 @@ export default function MessageFormComp() {
           <div className="flex gap-2">
             <label className="text-center font-semibold">To:</label>
             <input
-              className="w-20 outline-none border-b"
+              className="w-23 outline-none border-b"
               type="text"
               placeholder="Her/Him"
+              maxLength={12}
+              required
               value={receiver}
               onChange={(e) => setReceiver(e.target.value)}
             />
@@ -90,6 +94,8 @@ export default function MessageFormComp() {
               className="w-full rounded-4xl px-4 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
               rows={1}
               placeholder="iMessage"
+              required
+              maxLength={500}
               value={message}
               onChange={(e) => {
                 setMessage(e.target.value);
@@ -101,7 +107,7 @@ export default function MessageFormComp() {
             ) : (
               <button
                 type="submit"
-                className="px-1.5 text-white bg-[#007AFF] rounded-3xl cursor-pointer max-h-6 self-end"
+                className={`px-1.5 text-white self-end rounded-3xl max-h-6 ${isSubmitDisabled ? "cursor-not-allowed bg-gray-400" : "bg-[#007AFF] cursor-pointer"}`}
               >
                 {arrowUpIcon}
               </button>
