@@ -1,4 +1,4 @@
-import NavComp from "../../components/NavComp"
+import NavComp from "../../components/NavComp/NavComp";
 
 export default function NavPage() {
     return (
