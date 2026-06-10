@@ -33,7 +33,7 @@ export default function BannerComp() {
                   For the feelings that still live in your heart: the grief, the
                   love, the pain, the goodbyes.
                 </p>
-                <p>All “I miss you”s, and “I love you"s left unsaid.</p>
+                <p>All “I miss you”s, and “I love you”s left unsaid.</p>
               </div>
               <div>
                 <p>For someone you lost.</p>
@@ -42,7 +42,7 @@ export default function BannerComp() {
                   Someone you still carry in your heart but can no longer reach.
                 </p>
               </div>
-              <p>You can put your thoughts here for someone to see. </p>
+              <p>You can leave your thoughts here for someone to see. </p>
               <p className="pt-2 font-medium text-zinc-900">
                 You are not alone.
               </p>
