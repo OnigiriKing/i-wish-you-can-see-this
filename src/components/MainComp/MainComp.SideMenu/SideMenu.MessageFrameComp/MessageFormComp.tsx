@@ -34,10 +34,12 @@ export default function MessageFormComp() {
     if (isSubmitDisabled) return;
     
       const newMessage = {
-        sender,
-        receiver,
-        message,
+        sender: sender.trim(),
+        receiver: receiver.trim(),
+        message: message.trim(),
       };
+
+      console.log(newMessage);
 
   }
   return (
@@ -107,6 +109,7 @@ export default function MessageFormComp() {
             ) : (
               <button
                 type="submit"
+                disabled={isSubmitDisabled}
                 className={`px-1.5 text-white self-end rounded-3xl max-h-6 ${isSubmitDisabled ? "cursor-not-allowed bg-gray-400" : "bg-[#007AFF] cursor-pointer"}`}
               >
                 {arrowUpIcon}
