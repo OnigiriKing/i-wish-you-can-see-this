@@ -11,6 +11,12 @@ const datePhone = new Date().toLocaleTimeString([], {
   hour12: false,
 });
 
+const dateNow = new Date().toLocaleDateString("en-GB", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+});
+
 type MessageFormProps = {
   selectedLocation: SelectedLocation | null;
   setTestMessage: Dispatch<SetStateAction<Message[]>>;
@@ -52,6 +58,7 @@ export default function MessageFormComp({
       message: message.trim(),
       latitude: selectedLocation.latitude,
       longitude: selectedLocation.longitude,
+      date: dateNow,
     };
     setTestMessage((prevMessage) => [...prevMessage, newMessage]);
 
@@ -99,7 +106,7 @@ export default function MessageFormComp({
               onChange={(e) => setReceiver(e.target.value)}
             />
           </div>
-          <p className="text-center text-xs text-zinc-500">Today 22:15</p>
+          <p className="text-center text-xs text-zinc-500">{dateNow}</p>
         </div>
       </header>
 

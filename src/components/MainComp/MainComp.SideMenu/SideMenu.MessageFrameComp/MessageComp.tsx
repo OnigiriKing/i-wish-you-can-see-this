@@ -42,7 +42,7 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
           <p className="text-center font-semibold">
             To: {selectedMessage.receiver}
           </p>
-          <p className="text-center text-xs text-zinc-500">Today 22:15</p>
+          <p className="text-center text-xs text-zinc-500">{selectedMessage.date}</p>
         </div>
       </header>
 
