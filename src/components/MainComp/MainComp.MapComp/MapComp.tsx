@@ -7,6 +7,7 @@ import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
 import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
 
+
 type MapCompProps = {
   chooseLocationMode: boolean;
   setChooseLocationMode: Dispatch<SetStateAction<boolean>>;
@@ -26,6 +27,8 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
+
+
 export default function MapComp({
   chooseLocationMode,
   setChooseLocationMode,
@@ -34,12 +37,14 @@ export default function MapComp({
   setSideMenuMode,
   setSelectedMessageId,
 }: MapCompProps) {
+
+
   return (
     <div className="relative h-[calc(100vh-4rem)] w-full z-10">
       <MapContainer
         center={[35.6762, 139.6503]}
         zoom={3}
-        className={`h-full w-full ${chooseLocationMode ? "cursor-crosshair!" : ""}`}
+        className={`h-full w-full`}
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
