@@ -2,6 +2,8 @@ import allSvg from "../../../../assets/svg/AllSvg";
 import { useState } from "react";
 import type { SubmitEvent } from "react";
 import type { SelectedLocation } from "../../MainComp";
+import type { Message } from "../../../../assets/testData/testMessageData";
+import type { Dispatch, SetStateAction } from "react";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
@@ -11,6 +13,7 @@ const datePhone = new Date().toLocaleTimeString([], {
 
 type MessageFormProps = {
   selectedLocation: SelectedLocation | null;
+  setTestMessage: Dispatch<SetStateAction<Message[]>>;
 };
 
 const wifiIcon = allSvg(22).wifiIcon;
@@ -23,6 +26,7 @@ const avatarIcon = allSvg(50).avatarIcon;
 
 export default function MessageFormComp({
   selectedLocation,
+  setTestMessage,
 }: MessageFormProps) {
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
@@ -39,16 +43,21 @@ export default function MessageFormComp({
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (isSubmitDisabled) return;
+    if (isSubmitDisabled || !selectedLocation) return;
 
     const newMessage = {
+      id: crypto.randomUUID(),
       sender: sender.trim(),
       receiver: receiver.trim(),
       message: message.trim(),
-      location: selectedLocation,
+      latitude: selectedLocation.latitude,
+      longitude: selectedLocation.longitude,
     };
+    setTestMessage((prevMessage) => [...prevMessage, newMessage]);
 
-    console.log(newMessage);
+    setSender("");
+    setReceiver("");
+    setMessage("");
   }
   return (
     <form className="flex h-full flex-col" onSubmit={handleSubmit}>

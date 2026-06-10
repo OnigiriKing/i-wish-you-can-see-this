@@ -14,6 +14,7 @@ type SideMenuProps = {
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
   sideMenuMode: SideMenuMode;
   selectedLocation: SelectedLocation | null;
+  setTestMessage: Dispatch<SetStateAction<Message[]>>;
 };
 
 export default function SideMenu({
@@ -23,6 +24,7 @@ export default function SideMenu({
   setSelectedMessageId,
   sideMenuMode,
   selectedLocation,
+  setTestMessage,
 }: SideMenuProps) {
   return (
     <div
@@ -47,7 +49,10 @@ export default function SideMenu({
             )}
 
             {sideMenuMode === "create" && (
-              <MessageFormComp selectedLocation={selectedLocation} />
+              <MessageFormComp
+                selectedLocation={selectedLocation}
+                setTestMessage={setTestMessage}
+              />
             )}
           </div>
         </div>

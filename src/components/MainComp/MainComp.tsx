@@ -4,13 +4,12 @@ import { useState } from "react";
 import testMessageData from "../../assets/testData/testMessageData";
 
 // additional types
- export type SelectedLocation = {
-   latitude: number;
-   longitude: number;
- };
+export type SelectedLocation = {
+  latitude: number;
+  longitude: number;
+};
 
- export type SideMenuMode = "view" | "create";
- 
+export type SideMenuMode = "view" | "create";
 
 export default function MainComp() {
   const [sideMenuState, setSideMenuState] = useState(false);
@@ -24,10 +23,10 @@ export default function MainComp() {
     useState<SelectedLocation | null>(null);
   const [sideMenuMode, setSideMenuMode] = useState<SideMenuMode>("view");
 
+  // test message data
+  const [testMessage, setTestMessage] = useState(testMessageData);
 
-
-
-  const selectedMessage = testMessageData.find(
+  const selectedMessage = testMessage.find(
     (message) => message.id === selectedMessageId,
   );
 
@@ -40,6 +39,7 @@ export default function MainComp() {
         setSideMenuState={setSideMenuState}
         setSideMenuMode={setSideMenuMode}
         setSelectedMessageId={setSelectedMessageId}
+        testMessage={testMessage}
       />
       <SideMenu
         sideMenuState={sideMenuState}
@@ -48,6 +48,7 @@ export default function MainComp() {
         setSelectedMessageId={setSelectedMessageId}
         sideMenuMode={sideMenuMode}
         selectedLocation={selectedLocation}
+        setTestMessage={setTestMessage}
       />
     </div>
   );

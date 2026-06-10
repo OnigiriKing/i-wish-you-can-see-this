@@ -2,10 +2,10 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import allSvg from "../../../assets/svg/AllSvg";
 import { renderToStaticMarkup } from "react-dom/server";
-import testMessageData from "../../../assets/testData/testMessageData";
 import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
 import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
+import type { Message } from "../../../assets/testData/testMessageData";
 
 
 type MapCompProps = {
@@ -15,6 +15,7 @@ type MapCompProps = {
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
   setSideMenuMode: Dispatch<SetStateAction<SideMenuMode>>;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
+  testMessage: Message[];
 };
 
 const markerSvg = renderToStaticMarkup(allSvg(40).marker);
@@ -36,9 +37,8 @@ export default function MapComp({
   setSideMenuState,
   setSideMenuMode,
   setSelectedMessageId,
+  testMessage,
 }: MapCompProps) {
-
-
   return (
     <div className="relative h-[calc(100vh-4rem)] w-full z-10">
       <MapContainer
@@ -57,7 +57,7 @@ export default function MapComp({
           setSideMenuState={setSideMenuState}
           setSideMenuMode={setSideMenuMode}
         />
-        {testMessageData.map((message) => (
+        {testMessage.map((message) => (
           <Marker
             position={[message.latitude, message.longitude]}
             key={message.id}
