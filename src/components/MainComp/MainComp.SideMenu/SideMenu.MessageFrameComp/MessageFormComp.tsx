@@ -1,12 +1,17 @@
 import allSvg from "../../../../assets/svg/AllSvg";
 import { useState } from "react";
 import type { SubmitEvent } from "react";
+import type { SelectedLocation } from "../../MainComp";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
 });
+
+type MessageFormProps = {
+  selectedLocation: SelectedLocation | null;
+};
 
 const wifiIcon = allSvg(22).wifiIcon;
 const signalIcon = allSvg(22).signalIcon;
@@ -16,31 +21,34 @@ const microphoneIcon = allSvg(22).microphoneIcon;
 const arrowUpIcon = allSvg(22).arrowUpIcon;
 const avatarIcon = allSvg(50).avatarIcon;
 
-export default function MessageFormComp() {
+export default function MessageFormComp({
+  selectedLocation,
+}: MessageFormProps) {
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
   const [message, setMessage] = useState("");
 
-    function resizeTextarea(textarea: HTMLTextAreaElement) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 512)}px`;
-    }
+  function resizeTextarea(textarea: HTMLTextAreaElement) {
+    textarea.style.height = "auto";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 512)}px`;
+  }
 
-    const isSubmitDisabled = sender.trim() === "" || receiver.trim() === "" || message.trim() === "";
+  const isSubmitDisabled =
+    sender.trim() === "" || receiver.trim() === "" || message.trim() === "";
 
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (isSubmitDisabled) return;
-    
-      const newMessage = {
-        sender: sender.trim(),
-        receiver: receiver.trim(),
-        message: message.trim(),
-      };
 
-      console.log(newMessage);
+    const newMessage = {
+      sender: sender.trim(),
+      receiver: receiver.trim(),
+      message: message.trim(),
+      location: selectedLocation,
+    };
 
+    console.log(newMessage);
   }
   return (
     <form className="flex h-full flex-col" onSubmit={handleSubmit}>

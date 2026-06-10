@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import testMessageData from "../../../assets/testData/testMessageData";
 import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
+import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
 
 type MapCompProps = {
   chooseLocationMode: boolean;
@@ -69,6 +70,7 @@ export default function MapComp({
                   onClick={() => {
                     setSideMenuState(true);
                     setSelectedMessageId(message.id);
+                    setSideMenuMode("view");
                   }}
                 >
                   Open message
@@ -81,15 +83,22 @@ export default function MapComp({
       <button
         className="absolute bottom-6 left-1/2 z-100 -translate-x-1/2 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
         onClick={() => {
-          // setChooseLocationMode(true);
-          // setSideMenuState(false);
-          // setSideMenuMode("create");
-          // setSelectedMessageId(null);
-          // setSelectedLocation(null);
+          setChooseLocationMode(true);
+          setSideMenuState(false);
+          setSideMenuMode("create");
+          setSelectedMessageId(null);
+          setSelectedLocation(null);
         }}
       >
         Leave your message
       </button>
+      <LocationPickEvent
+        chooseLocationMode={chooseLocationMode}
+        setChooseLocationMode={setChooseLocationMode}
+        setSelectedLocation={setSelectedLocation}
+        setSideMenuState={setSideMenuState}
+        setSideMenuMode={setSideMenuMode}
+      />
     </>
   );
 }
