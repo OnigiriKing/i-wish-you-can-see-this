@@ -35,11 +35,11 @@ export default function MapComp({
   setSelectedMessageId,
 }: MapCompProps) {
   return (
-    <div className="relative">
+    <div className="relative h-[calc(100vh-4rem)] w-full z-10">
       <MapContainer
         center={[35.6762, 139.6503]}
         zoom={3}
-        className={`h-[calc(100vh-4rem)] w-full z-10 ${chooseLocationMode ? "cursor-crosshair" : ""}`}
+        className={`h-full w-full ${chooseLocationMode ? "cursor-crosshair!" : ""}`}
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
@@ -89,8 +89,16 @@ export default function MapComp({
         ))}
       </MapContainer>
       <button
-        className="absolute bottom-6 left-1/2 z-100 -translate-x-1/2 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
+        className="absolute bottom-6 left-1/2 z-1000 -translate-x-1/2 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
         onClick={() => {
+          if (chooseLocationMode) {
+            setChooseLocationMode(false);
+            setSideMenuState(false);
+            setSideMenuMode("view");
+            setSelectedMessageId(null);
+            setSelectedLocation(null);
+            return;
+          }
           setChooseLocationMode(true);
           setSideMenuState(false);
           setSideMenuMode("create");
@@ -98,7 +106,7 @@ export default function MapComp({
           setSelectedLocation(null);
         }}
       >
-        Leave your message
+        {chooseLocationMode ? "Cancel" : "Leave your message"}
       </button>
     </div>
   );
