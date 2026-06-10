@@ -35,15 +35,22 @@ export default function MapComp({
   setSelectedMessageId,
 }: MapCompProps) {
   return (
-    <>
+    <div className="relative">
       <MapContainer
         center={[35.6762, 139.6503]}
         zoom={3}
-        className="h-[calc(100vh-4rem)] w-full z-10"
+        className={`h-[calc(100vh-4rem)] w-full z-10 ${chooseLocationMode ? "cursor-crosshair" : ""}`}
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <LocationPickEvent
+          chooseLocationMode={chooseLocationMode}
+          setChooseLocationMode={setChooseLocationMode}
+          setSelectedLocation={setSelectedLocation}
+          setSideMenuState={setSideMenuState}
+          setSideMenuMode={setSideMenuMode}
         />
         {testMessageData.map((message) => (
           <Marker
@@ -68,6 +75,7 @@ export default function MapComp({
                 <button
                   className="cursor-pointer rounded-xl px-4 py-1.5 font-medium text-zinc-800 transition hover:bg-zinc-100 text-center border-zinc-200 border"
                   onClick={() => {
+                    setChooseLocationMode(false);
                     setSideMenuState(true);
                     setSelectedMessageId(message.id);
                     setSideMenuMode("view");
@@ -92,13 +100,6 @@ export default function MapComp({
       >
         Leave your message
       </button>
-      <LocationPickEvent
-        chooseLocationMode={chooseLocationMode}
-        setChooseLocationMode={setChooseLocationMode}
-        setSelectedLocation={setSelectedLocation}
-        setSideMenuState={setSideMenuState}
-        setSideMenuMode={setSideMenuMode}
-      />
-    </>
+    </div>
   );
 }
