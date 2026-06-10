@@ -9,18 +9,29 @@ export default function BannerComp() {
 
     setTimeout(() => {
       setBannerState(false);
-    }, 300);
+    }, 400);
   }
 
   return (
     <>
-      <div className={`h-full w-full absolute z-50 bg-white text-center items-center`}>
-        <div>
-          <h1>I wish you can read this</h1>
+      {bannerState && (
+        <div
+          className={`h-full w-full absolute z-40 bg-white text-center justify-center items-center transition-all duration-400 flex flex-col  ${
+            isClosing ? "-translate-y-6 opacity-0" : "translate-y-0 opacity-100"
+          } `}
+        >
+          <div>
+            <h1 className="">I wish you can read this</h1>
+          </div>
+          <div></div>
+          <button
+            className="rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
+            onClick={handleCloseBanner}
+          >
+            Continue
+          </button>
         </div>
-        <div></div>
-        <button onClick={handleCloseBanner}>Continue</button>
-      </div>
+      )}
     </>
   );
 }
