@@ -3,6 +3,15 @@ import SideMenu from "./MainComp.SideMenu/SideMenu";
 import { useState } from "react";
 import testMessageData from "../../assets/testData/testMessageData";
 
+// additional types
+ export type SelectedLocation = {
+   latitude: number;
+   longitude: number;
+ };
+
+ export type SideMenuMode = "view" | "create";
+ 
+
 export default function MainComp() {
   const [sideMenuState, setSideMenuState] = useState(false);
   const [selectedMessageId, setSelectedMessageId] = useState<string | null>(
@@ -11,11 +20,12 @@ export default function MainComp() {
 
   // create message states
   const [chooseLocationMode, setChooseLocationMode] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState<{
-    latitude: number;
-    longitude: number;
-  } | null>(null);
-  const [sideMenuMode, setSideMenuMode] = useState<"view" | "create">("view");
+  const [selectedLocation, setSelectedLocation] =
+    useState<SelectedLocation | null>(null);
+  const [sideMenuMode, setSideMenuMode] = useState<SideMenuMode>("view");
+
+
+
 
   const selectedMessage = testMessageData.find(
     (message) => message.id === selectedMessageId,
@@ -24,7 +34,11 @@ export default function MainComp() {
   return (
     <div className="relative flex overflow-hidden">
       <MapComp
+        chooseLocationMode={chooseLocationMode}
+        setChooseLocationMode={setChooseLocationMode}
+        setSelectedLocation={setSelectedLocation}
         setSideMenuState={setSideMenuState}
+        setSideMenuMode={setSideMenuMode}
         setSelectedMessageId={setSelectedMessageId}
       />
       <SideMenu
@@ -32,6 +46,8 @@ export default function MainComp() {
         setSideMenuState={setSideMenuState}
         selectedMessage={selectedMessage}
         setSelectedMessageId={setSelectedMessageId}
+        sideMenuMode={sideMenuMode}
+        selectedLocation={selectedLocation}
       />
     </div>
   );

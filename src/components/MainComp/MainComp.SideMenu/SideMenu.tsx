@@ -3,6 +3,7 @@ import MessageComp from "./SideMenu.MessageFrameComp/MessageComp";
 import type { Dispatch, SetStateAction } from "react";
 import type { Message } from "../../../assets/testData/testMessageData";
 import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
+import type { SelectedLocation, SideMenuMode } from "../MainComp";
 
 const crossButton = allSvg(30).crossButton;
 
@@ -11,6 +12,8 @@ type SideMenuProps = {
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
   selectedMessage: Message | undefined;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
+  sideMenuMode: SideMenuMode;
+  selectedLocation: SelectedLocation | null;
 };
 
 export default function SideMenu({
@@ -18,6 +21,8 @@ export default function SideMenu({
   setSideMenuState,
   selectedMessage,
   setSelectedMessageId,
+  sideMenuMode,
+  selectedLocation,
 }: SideMenuProps) {
   return (
     <div
@@ -37,8 +42,13 @@ export default function SideMenu({
           {/* Device content */}
           <div className="device-content bg-white w-full h-full rounded-[3rem]">
             {/* content container */}
-            {/* <MessageComp selectedMessage={selectedMessage} /> */}
-            <MessageFormComp />
+            {sideMenuMode === "view" && (
+              <MessageComp selectedMessage={selectedMessage} />
+            )}
+
+            {sideMenuMode === "create" && (
+              <MessageFormComp selectedLocation={selectedLocation} />
+            )}
           </div>
         </div>
 

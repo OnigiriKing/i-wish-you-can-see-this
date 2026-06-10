@@ -4,9 +4,14 @@ import allSvg from "../../../assets/svg/AllSvg";
 import { renderToStaticMarkup } from "react-dom/server";
 import testMessageData from "../../../assets/testData/testMessageData";
 import type { Dispatch, SetStateAction } from "react";
+import type { SideMenuMode, SelectedLocation } from "../MainComp";
 
 type MapCompProps = {
+  chooseLocationMode: boolean;
+  setChooseLocationMode: Dispatch<SetStateAction<boolean>>;
+  setSelectedLocation: Dispatch<SetStateAction<SelectedLocation | null>>;
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
+  setSideMenuMode: Dispatch<SetStateAction<SideMenuMode>>;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
 };
 
@@ -20,7 +25,14 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
-export default function MapComp({ setSideMenuState, setSelectedMessageId }: MapCompProps) {
+export default function MapComp({
+  chooseLocationMode,
+  setChooseLocationMode,
+  setSelectedLocation,
+  setSideMenuState,
+  setSideMenuMode,
+  setSelectedMessageId,
+}: MapCompProps) {
   return (
     <>
       <MapContainer
