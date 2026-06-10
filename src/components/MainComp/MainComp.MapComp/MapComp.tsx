@@ -67,7 +67,7 @@ export default function MapComp({ setSideMenuState, setSelectedMessageId }: MapC
         ))}
       </MapContainer>
       <button
-        className="absolute bottom-6 left-1/2 z-100 -translate-x-1/2 rounded-full  bg-black px-5 py-3 text-white shadow-lg cursor-pointer"
+        className="absolute bottom-6 left-1/2 z-100 -translate-x-1/2 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
         onClick={() => {
           // setChooseLocationMode(true);
           // setSideMenuState(false);
