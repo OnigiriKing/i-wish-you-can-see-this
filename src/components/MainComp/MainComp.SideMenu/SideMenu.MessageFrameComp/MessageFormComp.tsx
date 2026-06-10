@@ -20,6 +20,7 @@ const dateNow = new Date().toLocaleDateString("en-GB", {
 type MessageFormProps = {
   selectedLocation: SelectedLocation | null;
   setTestMessage: Dispatch<SetStateAction<Message[]>>;
+  setSideMenuState: Dispatch<SetStateAction<boolean>>;
 };
 
 const wifiIcon = allSvg(22).wifiIcon;
@@ -33,6 +34,7 @@ const avatarIcon = allSvg(50).avatarIcon;
 export default function MessageFormComp({
   selectedLocation,
   setTestMessage,
+  setSideMenuState,
 }: MessageFormProps) {
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
@@ -65,6 +67,8 @@ export default function MessageFormComp({
     setSender("");
     setReceiver("");
     setMessage("");
+
+    setSideMenuState(false);
   }
   return (
     <form className="flex h-full flex-col" onSubmit={handleSubmit}>

@@ -52,19 +52,16 @@ export default function SideMenu({
               <MessageFormComp
                 selectedLocation={selectedLocation}
                 setTestMessage={setTestMessage}
+                setSideMenuState={setSideMenuState}
               />
             )}
           </div>
         </div>
 
         <div className="device-stripe"></div>
-
         <div className="device-header"></div>
-
         <div className="device-sensors"></div>
-
         <div className="device-btns"></div>
-
         <div className="device-power"></div>
       </div>
     </div>
