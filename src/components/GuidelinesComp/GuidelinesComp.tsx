@@ -111,14 +111,13 @@ export default function GuidelinesComp() {
 
           <section className="rounded-3xl border border-zinc-200 px-6 py-6">
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              This is not a crisis support service
+              If you are struggling
             </h2>
             <p>
-              This website can be emotional, but it is not therapy, counseling,
-              or emergency support. If you feel unsafe, overwhelmed, or at risk
-              of hurting yourself or someone else, please contact a trusted
-              person, local emergency services, or a crisis support service in
-              your country.
+              This space can bring up difficult feelings. If you feel unsafe,
+              overwhelmed, or at risk of hurting yourself or someone else,
+              please reach out to someone you trust, local emergency services,
+              or a crisis support service in your country.
             </p>
           </section>
 
