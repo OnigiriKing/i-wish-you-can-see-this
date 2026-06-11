@@ -13,7 +13,7 @@ export default function DropMenu({ setDropMenuState }: DropMenuProps) {
     const { t } = useTranslation();
 
   return (
-    <nav className="absolute right-14 top-16 z-50 flex w-40 flex-col rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur text-center">
+    <nav className="relative z-50 flex w-40 flex-col rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur text-center">
       <Link
         to={"/guidelines"}
         className={linkStyle}

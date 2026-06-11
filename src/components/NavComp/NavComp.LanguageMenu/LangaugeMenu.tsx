@@ -15,7 +15,7 @@ export default function LanguageMenu({
     const { i18n } = useTranslation();
 
   return (
-    <nav className="absolute right-27 top-16 z-50 flex w-30 flex-col rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur">
+    <nav className="relative w-36 rounded-2xl border z-40 border-zinc-200 bg-white/95 p-3 shadow-xl backdrop-blur">
       <button
         className={linkStyle}
         onClick={() => {

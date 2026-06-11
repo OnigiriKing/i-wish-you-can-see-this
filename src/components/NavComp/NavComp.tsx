@@ -18,8 +18,8 @@ export default function NavComp() {
 
   return (
     <>
-      <header className="relative w-full h-16 flex items-center justify-between px-30 z-50">
-        <Link to="/" className="text-2xl">
+      <header className="relative w-full h-16 flex items-center sm:justify-between px-30 z-50 justify-center">
+        <Link to="/" className="text-2xl hidden sm:block">
           {t("nav.title")}
         </Link>
         <div className="flex gap-6 items-center">
@@ -32,14 +32,22 @@ export default function NavComp() {
               {gitHub}
             </Link>
           </div>
-          <button
-            className="items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 flex flex-row text-transform: uppercase"
-            onClick={() =>
-              setLanguageMenuState((languageMenuState) => !languageMenuState)
-            }
-          >
-            {languageList} {languageMenuState ? arrowDown : i18n.language}
-          </button>
+          <div className="relative flex items-center">
+            <button
+              className="items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 flex flex-row text-transform: uppercase"
+              onClick={() =>
+                setLanguageMenuState((languageMenuState) => !languageMenuState)
+              }
+            >
+              {languageList} {languageMenuState ? arrowDown : i18n.language}
+            </button>
+            {languageMenuState && (
+              <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2">
+                <LanguageMenu setLanguageMenuState={setLanguageMenuState} />
+              </div>
+            )}
+          </div>
+<div className="relative flex items-center">
           <button
             type="button"
             className={`items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
@@ -49,12 +57,15 @@ export default function NavComp() {
           >
             {dropMenu}
           </button>
+          {dropMenuState && (
+              <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2">
+                <DropMenu setDropMenuState={setDropMenuState}  />
+              </div>
+            )}
+          <div />
+        </div>
         </div>
       </header>
-      {dropMenuState && <DropMenu setDropMenuState={setDropMenuState} />}
-      {languageMenuState && (
-        <LanguageMenu setLanguageMenuState={setLanguageMenuState} />
-      )}
     </>
   );
 }
