@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import "leaflet/dist/leaflet.css";
 import "devices.css/dist/devices.min.css";
+
 import BannerPage from "./pages/BannerPage/MainPage";
 
 

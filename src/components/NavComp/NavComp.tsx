@@ -3,6 +3,7 @@ import allSvg from "../../assets/svg/AllSvg";
 import { useState } from "react";
 import DropMenu from "./NavComp.DropMenu/DropMenu";
 import LanguageMenu from "./NavComp.LanguageMenu/LangaugeMenu";
+import { useTranslation } from "react-i18next";
 
 export default function NavComp() {
   const [dropMenuState, setDropMenuState] = useState(false);
@@ -11,6 +12,9 @@ export default function NavComp() {
   const gitHub = allSvg(30).gitHub;
   const languageList = allSvg(32).languageList;
   const arrowDown = allSvg(21).arrowDown;
+
+  // i18next
+    const { i18n } = useTranslation();
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function NavComp() {
               setLanguageMenuState((languageMenuState) => !languageMenuState)
             }
           >
-            {languageList} {languageMenuState ? arrowDown : "EN"}
+            {languageList} {languageMenuState ? arrowDown : i18n.language}
           </button>
           <button
             type="button"
