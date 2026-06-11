@@ -1,4 +1,4 @@
-import LegalComp from "../../components/LegalComp/MainComp";
+import LegalComp from "../../components/LegalComp/LegalComp";
 
 export default function LegalPage() {
   return (

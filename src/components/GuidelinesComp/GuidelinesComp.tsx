@@ -126,8 +126,9 @@ export default function GuidelinesComp() {
               Final note
             </h2>
             <p>
-              Please be kind. Leave words that need a place to exist, not words
-              meant to hurt someone else.
+              This place is for expression, not revenge. Please be kind. Leave
+              words that need a place to exist, not words meant to hurt someone
+              else.
             </p>
           </section>
         </div>
