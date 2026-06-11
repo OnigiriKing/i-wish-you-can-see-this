@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function GuidelinesComp() {
+  const { t } = useTranslation();
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-white px-6 py-16 text-zinc-900">
       <section className="mx-auto max-w-3xl">
@@ -8,127 +10,105 @@ export default function GuidelinesComp() {
           to="/"
           className="mb-8 inline-flex text-sm font-medium text-zinc-500 transition hover:text-zinc-900"
         >
-          ← Back to map
+          {t("guidelines.backToMap")}
         </Link>
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-zinc-400">
-            Community Guidelines
+            {t("guidelines.label")}
           </p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            A place for the messages unsent.
+            {t("guidelines.title")}
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-zinc-600">
-            This is a space for grief, love, memories, goodbyes, and messages
-            you could not send. To keep it respectful and safe, please follow
-            these guidelines.
+            {t("guidelines.intro")}
           </p>
         </div>
 
         <div className="space-y-8 text-base leading-relaxed text-zinc-700">
           <section className="rounded-3xl border border-zinc-200 bg-zinc-50 px-6 py-6">
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              What you can leave here
+              {t("guidelines.whatTitle")}
             </h2>
             <p>
-              You may leave a message for someone you lost, someone who left,
-              someone you miss, or someone you can no longer reach. Messages can
-              be emotional, personal, sad, loving, unfinished, or simple.
+              {t("guidelines.whatText")}
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              Please do not post
+              {t("guidelines.dontPostTitle")}
             </h2>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                Private personal information about yourself or another person.
+                {t("guidelines.dontPostPrivate")}
               </li>
               <li>
-                Full names, addresses, phone numbers, emails, workplace details,
-                or school details without permission.
+                {t("guidelines.dontPostDetails")}
               </li>
               <li>
-                Threats, harassment, stalking, insults, or messages meant to
-                shame someone.
+                {t("guidelines.dontPostThreats")}
               </li>
-              <li>Hate speech, discrimination, or dehumanizing language.</li>
+              <li>{t("guidelines.dontPostHate")}</li>
               <li>
-                Sexual, graphic, violent, illegal, or exploitative content.
+                {t("guidelines.dontPostExplicit")}
               </li>
               <li>
-                Spam, advertising, links to scams, or repeated duplicate
-                messages.
+                {t("guidelines.dontPostSpam")}
               </li>
             </ul>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              Keep messages respectful
+              {t("guidelines.respectTitle")}
             </h2>
             <p>
-              This place is for expression, not revenge. It is okay to write
-              about pain, grief, confusion, or love. It is not okay to use this
-              space to attack, expose, threaten, or pressure another person.
+              {t("guidelines.respectText")}
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              Remember that messages are public
+              {t("guidelines.publicTitle")}
             </h2>
             <p>
-              Messages left on the map may be visible to other visitors. Do not
-              share anything you would not want strangers to read. If you write
-              about a real person, avoid details that could identify or harm
-              them.
+              {t("guidelines.publicText")}
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              Moderation and removal
+              {t("guidelines.moderationTitle")}
             </h2>
             <p>
-              Messages that break these guidelines may be hidden, rejected, or
-              removed. Reports may be reviewed manually. A message may also be
-              removed if it creates risk for someone’s privacy, safety, or
-              dignity.
+              {t("guidelines.moderationText")}
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              If you see something harmful
+              {t("guidelines.harmfulTitle")}
             </h2>
             <p>
-              If a message contains private information, harassment, threats,
-              hate, or harmful content, please report it or contact us. Include
-              enough detail so the message can be found and reviewed.
+              {t("guidelines.harmfulText")}
             </p>
           </section>
 
           <section className="rounded-3xl border border-zinc-200 px-6 py-6">
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              If you are struggling
+              {t("guidelines.strugglingTitle")}
             </h2>
             <p>
-              This space can bring up difficult feelings. If you feel unsafe,
-              overwhelmed, or at risk of hurting yourself or someone else,
-              please reach out to someone you trust, local emergency services,
-              or a crisis support service in your country.
+              {t("guidelines.strugglingText")}
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
-              Final note
+              {t("guidelines.finalTitle")}
             </h2>
             <p>
-              This place is for expression, not revenge. Please be kind. Leave
-              words that need a place to exist, not words meant to hurt someone
-              else.
+              {t("guidelines.finalText")}
             </p>
           </section>
         </div>

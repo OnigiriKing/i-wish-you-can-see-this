@@ -13,7 +13,7 @@ export default function BannerComp() {
     }, 400);
   }
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
