@@ -4,6 +4,7 @@ import type { SubmitEvent } from "react";
 import type { SelectedLocation } from "../../MainComp";
 import type { Message } from "../../../../assets/testData/testMessageData";
 import type { Dispatch, SetStateAction } from "react";
+import { useTranslation } from "react-i18next";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
@@ -36,6 +37,10 @@ export default function MessageFormComp({
   setTestMessage,
   setSideMenuState,
 }: MessageFormProps) {
+
+  const { t } = useTranslation();
+
+
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
   const [message, setMessage] = useState("");
@@ -86,7 +91,9 @@ export default function MessageFormComp({
           <div className="text-[#8A94A6]">{avatarIcon}</div>
           {/* from field */}
           <div className="flex gap-2">
-            <label className="text-center font-semibold">From:</label>
+            <label className="text-center font-semibold">
+              {t("message.from")}:
+            </label>
             <input
               className="w-23 outline-none border-b"
               type="text"
@@ -99,7 +106,9 @@ export default function MessageFormComp({
           </div>
           {/* to field */}
           <div className="flex gap-2">
-            <label className="text-center font-semibold">To:</label>
+            <label className="text-center font-semibold">
+              {t("message.to")}:
+            </label>
             <input
               className="w-23 outline-none border-b"
               type="text"

@@ -92,5 +92,9 @@
     "messagePlaceholder": "Write your message here...",
     "send": "Send message",
     "success": "Thank you. Your message has been received."
+  },
+  "message": {
+    "from": "From",
+    "to": "To"
   }
 }

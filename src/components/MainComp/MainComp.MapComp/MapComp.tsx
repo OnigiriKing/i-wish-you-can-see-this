@@ -72,7 +72,9 @@ export default function MapComp({
               <div className="flex flex-col gap-2 mb-2">
                 <div className="flex flex-col gap-1 border-b border-zinc-300 font-semibold pb-1">
                   <div className="text-[14px]">{message.sender}</div>
-                  <div>To: {message.receiver}</div>
+                  <div>
+                    {t("message.to")}: {message.receiver}
+                  </div>
                   <div>{message.date}</div>
                 </div>
                 <div className="text-[15px]">
