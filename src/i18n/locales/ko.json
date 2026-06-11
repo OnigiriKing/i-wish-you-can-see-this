@@ -95,6 +95,8 @@
   },
   "message": {
     "from": "보낸 사람",
-    "to": "받는 사람"
+    "to": "받는 사람",
+    "senderPlaceholder": "이름",
+    "receiverPlaceholder": "그 사람"
   }
 }

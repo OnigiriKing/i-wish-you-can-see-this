@@ -95,6 +95,8 @@
   },
   "message": {
     "from": "От",
-    "to": "Кому"
+    "to": "Кому",
+    "senderPlaceholder": "Ты",
+    "receiverPlaceholder": "Он/она"
   }
 }

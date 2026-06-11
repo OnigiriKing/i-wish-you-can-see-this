@@ -95,6 +95,8 @@
   },
   "message": {
     "from": "差出人",
-    "to": "宛先"
+    "to": "宛先",
+    "senderPlaceholder": "あなた",
+    "receiverPlaceholder": "あの人"
   }
 }

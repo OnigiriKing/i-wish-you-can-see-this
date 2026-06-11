@@ -37,9 +37,7 @@ export default function MessageFormComp({
   setTestMessage,
   setSideMenuState,
 }: MessageFormProps) {
-
   const { t } = useTranslation();
-
 
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
@@ -97,7 +95,7 @@ export default function MessageFormComp({
             <input
               className="w-23 outline-none border-b"
               type="text"
-              placeholder="Name"
+              placeholder={t("message.senderPlaceholder")}
               maxLength={12}
               required
               value={sender}
@@ -112,7 +110,7 @@ export default function MessageFormComp({
             <input
               className="w-23 outline-none border-b"
               type="text"
-              placeholder="Her/Him"
+              placeholder={t("message.receiverPlaceholder")}
               maxLength={12}
               required
               value={receiver}

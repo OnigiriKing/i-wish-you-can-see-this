@@ -95,6 +95,8 @@
   },
   "message": {
     "from": "From",
-    "to": "To"
+    "to": "To",
+    "senderPlaceholder": "Name",
+    "receiverPlaceholder": "Her/Him"
   }
 }
