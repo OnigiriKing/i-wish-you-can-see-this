@@ -1,0 +1,26 @@
+.phone-device-wrapper {
+  --phone-scale: 0.72;
+  position: relative;
+  width: calc(428px * var(--phone-scale));
+  height: calc(868px * var(--phone-scale));
+  flex-shrink: 0;
+}
+
+.phone-device-wrapper .device.device-iphone-14-pro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: top left;
+}
+
+@media (max-width: 640px) {
+  .phone-device-wrapper {
+    --phone-scale: 0.52;
+  }
+}
+
+@media (max-width: 390px) {
+  .phone-device-wrapper {
+    --phone-scale: 0.48;
+  }
+}

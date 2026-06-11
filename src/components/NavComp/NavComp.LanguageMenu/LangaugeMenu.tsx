@@ -21,6 +21,7 @@ export default function LanguageMenu({
         onClick={() => {
           setLanguageMenuState(false);
           i18n.changeLanguage("en");
+          localStorage.setItem("language", "en");
         }}
       >
         English
@@ -30,6 +31,7 @@ export default function LanguageMenu({
         onClick={() => {
           setLanguageMenuState(false);
           i18n.changeLanguage("ja");
+          localStorage.setItem("language", "ja");
         }}
       >
         日本語
@@ -39,6 +41,7 @@ export default function LanguageMenu({
         onClick={() => {
           setLanguageMenuState(false);
           i18n.changeLanguage("ko");
+          localStorage.setItem("language", "ko");
         }}
       >
         한국어
@@ -48,6 +51,7 @@ export default function LanguageMenu({
         onClick={() => {
           setLanguageMenuState(false);
           i18n.changeLanguage("ru");
+          localStorage.setItem("language", "ru");
         }}
       >
         Русский

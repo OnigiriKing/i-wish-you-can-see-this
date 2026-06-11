@@ -28,10 +28,10 @@ export default function SideMenu({
 }: SideMenuProps) {
   return (
     <div
-      className={`w-100 bg-white absolute right-0 top-0 h-full flex z-20 justify-center transition-transform duration-300 ease-in-out ${sideMenuState ? "translate-x-0" : "translate-x-full"}`}
+      className={`absolute inset-0 z-40 flex w-full items-start justify-center overflow-y-auto bg-white px-4 py-8 transition-transform duration-300 ease-in-out lg:inset-y-0 lg:right-0 lg:left-auto lg:w-105 lg:px-0 lg:py-0 ${sideMenuState ? "translate-x-0" : "translate-x-full"}`}
     >
       <button
-        className="absolute left-5 top-5 cursor-pointer transition hover:text-zinc-400 ease-in-out duration-300"
+        className="absolute left-5 top-5 z-50 cursor-pointer transition duration-300 ease-in-out hover:text-zinc-400"
         onClick={() => {
           setSideMenuState(false);
           setSelectedMessageId(null);
@@ -39,30 +39,32 @@ export default function SideMenu({
       >
         {crossButton}
       </button>
-      <div className="device device-iphone-14-pro my-15">
-        <div className="device-frame">
-          {/* Device content */}
-          <div className="device-content bg-white w-full h-full rounded-[3rem]">
-            {/* content container */}
-            {sideMenuMode === "view" && (
-              <MessageComp selectedMessage={selectedMessage} />
-            )}
+      <div className="phone-device-wrapper">
+        <div className="device device-iphone-14-pro sm:my-15">
+          <div className="device-frame">
+            {/* Device content */}
+            <div className="device-content bg-white w-full h-full rounded-[3rem]">
+              {/* content container */}
+              {sideMenuMode === "view" && (
+                <MessageComp selectedMessage={selectedMessage} />
+              )}
 
-            {sideMenuMode === "create" && (
-              <MessageFormComp
-                selectedLocation={selectedLocation}
-                setTestMessage={setTestMessage}
-                setSideMenuState={setSideMenuState}
-              />
-            )}
+              {sideMenuMode === "create" && (
+                <MessageFormComp
+                  selectedLocation={selectedLocation}
+                  setTestMessage={setTestMessage}
+                  setSideMenuState={setSideMenuState}
+                />
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="device-stripe"></div>
-        <div className="device-header"></div>
-        <div className="device-sensors"></div>
-        <div className="device-btns"></div>
-        <div className="device-power"></div>
+          <div className="device-stripe"></div>
+          <div className="device-header"></div>
+          <div className="device-sensors"></div>
+          <div className="device-btns"></div>
+          <div className="device-power"></div>
+        </div>
       </div>
     </div>
   );
