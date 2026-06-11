@@ -1,7 +1,26 @@
 {
   "nav": {
+    "title": "I wish you could read this",
     "guidelines": "Guidelines",
     "legal": "Legal",
     "contact": "Contact"
+  },
+  "map": {
+    "openMessage": "Open message",
+    "cancel": "Cancel",
+    "leaveMessage" : "Leave your message"
+  },
+  "banner": {
+    "title": "I wish you could read this.",
+    "place": "A place for the unsent messages.",
+    "feelings": "For the feelings that still live in your heart: the grief, the love, the pain, the goodbyes.",
+    "unsaid": "All “I miss you”s, and “I love you”s left unsaid.",
+    "lost": "For someone you lost.",
+    "left": "Someone who left.",
+    "carry": "Someone you still carry in your heart but can no longer reach.",
+    "thoughts": "You can leave your thoughts here for someone to see.",
+    "notAlone": "You are not alone.",
+    "enough": "And you are enough, just as you are.",
+    "continue": "Continue"
   }
-}
+  }

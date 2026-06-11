@@ -14,13 +14,13 @@ export default function NavComp() {
   const arrowDown = allSvg(21).arrowDown;
 
   // i18next
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
   return (
     <>
-      <header className="relative w-full h-16 flex items-center justify-between px-20 z-50">
+      <header className="relative w-full h-16 flex items-center justify-between px-30 z-50">
         <Link to="/" className="text-2xl">
-          I wish you could read this
+          {t("nav.title")}
         </Link>
         <div className="flex gap-6 items-center">
           <div>
@@ -33,7 +33,7 @@ export default function NavComp() {
             </Link>
           </div>
           <button
-            className="items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 flex flex-row"
+            className="items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 flex flex-row text-transform: uppercase"
             onClick={() =>
               setLanguageMenuState((languageMenuState) => !languageMenuState)
             }

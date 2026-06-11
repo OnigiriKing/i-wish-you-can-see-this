@@ -1,7 +1,26 @@
 {
   "nav": {
-    "guidelines": "Guidelines",
-    "legal": "Legal",
-    "contact": "Contact"
+    "title": "I wish you could read this",
+    "guidelines": "ガイドライン",
+    "legal": "法的事項",
+    "contact": "お問い合わせ"
+  },
+  "map": {
+    "openMessage": "メッセージを開く",
+    "cancel": "キャンセル",
+    "leaveMessage": "メッセージを残す"
+  },
+  "banner": {
+    "title": "I wish you could read this.",
+    "place": "届けられなかった想いを残す場所。",
+    "feelings": "まだ心の中に残っている気持ちのために。悲しみ、愛、痛み、そして言えなかったさよならのために。",
+    "unsaid": "伝えられなかった「会いたい」も、「愛してる」も。",
+    "lost": "失った人へ。",
+    "left": "去っていった人へ。",
+    "carry": "今も心の中にいるけれど、もう届かない人へ。",
+    "thoughts": "誰かに届くかもしれない想いを、ここにそっと残せます。",
+    "notAlone": "あなたは一人ではありません。",
+    "enough": "そして、あなたはそのままで十分です。",
+    "continue": "続ける"
   }
 }

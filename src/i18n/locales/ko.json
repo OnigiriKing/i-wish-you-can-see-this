@@ -1,7 +1,26 @@
 {
   "nav": {
-    "guidelines": "Guidelines",
-    "legal": "Legal",
-    "contact": "Contact"
+    "title": "I wish you could read this",
+    "guidelines": "가이드라인",
+    "legal": "법적 고지",
+    "contact": "문의"
+  },
+  "map": {
+    "openMessage": "메시지 열기",
+    "cancel": "취소",
+    "leaveMessage": "메시지 남기기"
+  },
+  "banner": {
+    "title": "I wish you could read this.",
+    "place": "보내지 못한 마음을 남겨두는 곳.",
+    "feelings": "아직 마음속에 남아 있는 감정들을 위해. 슬픔, 사랑, 아픔, 그리고 하지 못한 작별 인사를 위해.",
+    "unsaid": "끝내 전하지 못했던 “보고 싶어”와 “사랑해”를 위해.",
+    "lost": "떠나보낸 사람에게.",
+    "left": "떠나간 사람에게.",
+    "carry": "아직 마음속에 간직하고 있지만, 더는 닿을 수 없는 사람에게.",
+    "thoughts": "누군가가 볼 수 있도록, 당신의 마음을 이곳에 조용히 남겨둘 수 있어요.",
+    "notAlone": "당신은 혼자가 아니에요.",
+    "enough": "그리고 당신은 지금 모습 그대로도 충분해요.",
+    "continue": "계속하기"
   }
 }

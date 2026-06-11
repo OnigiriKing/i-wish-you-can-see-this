@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function BannerComp() {
   const [bannerState, setBannerState] = useState(true);
@@ -12,6 +13,8 @@ export default function BannerComp() {
     }, 400);
   }
 
+    const { t } = useTranslation();
+
   return (
     <>
       {bannerState && (
@@ -23,38 +26,31 @@ export default function BannerComp() {
           <div className="mx-auto w-[80%] max-w-3xl">
             <div>
               <h1 className="mb-8 text-4xl font-semibold tracking-tight text-zinc-950">
-                I wish you could read this.
+                {t("banner.title")}
               </h1>
             </div>
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-zinc-700">
-              <p>A place for the unsent messages.</p>
+              <p>{t("banner.place")}</p>
               <div>
-                <p>
-                  For the feelings that still live in your heart: the grief, the
-                  love, the pain, the goodbyes.
-                </p>
-                <p>All “I miss you”s, and “I love you”s left unsaid.</p>
+                <p>{t("banner.feelings")}</p>
+                <p>{t("banner.unsaid")}</p>
               </div>
               <div>
-                <p>For someone you lost.</p>
-                <p>Someone who left.</p>
-                <p>
-                  Someone you still carry in your heart but can no longer reach.
-                </p>
+                <p>{t("banner.lost")}</p>
+                <p>{t("banner.left")}</p>
+                <p>{t("banner.carry")}</p>
               </div>
-              <p>You can leave your thoughts here for someone to see. </p>
+              <p>{t("banner.thoughts")}</p>
               <p className="pt-2 font-medium text-zinc-900">
-                You are not alone.
+                {t("banner.notAlone")}
               </p>
-              <p className="font-medium text-zinc-900">
-                And you are enough, just as you are.
-              </p>
+              <p className="font-medium text-zinc-900">{t("banner.enough")}</p>
             </div>
             <button
               className="text-lg mt-10 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
               onClick={handleCloseBanner}
             >
-              Continue
+              {t("banner.continue")}
             </button>
           </div>
         </div>

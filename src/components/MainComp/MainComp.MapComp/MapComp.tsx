@@ -6,6 +6,8 @@ import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
 import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
 import type { Message } from "../../../assets/testData/testMessageData";
+import { useTranslation } from "react-i18next";
+
 
 
 type MapCompProps = {
@@ -39,6 +41,9 @@ export default function MapComp({
   setSelectedMessageId,
   testMessage,
 }: MapCompProps) {
+
+  const { t } = useTranslation();
+
   return (
     <div className="relative h-[calc(100vh-4rem)] w-full z-10">
       <MapContainer
@@ -86,7 +91,7 @@ export default function MapComp({
                     setSideMenuMode("view");
                   }}
                 >
-                  Open message
+                  {t("map.openMessage")}
                 </button>
               </div>
             </Popup>
@@ -111,7 +116,7 @@ export default function MapComp({
           setSelectedLocation(null);
         }}
       >
-        {chooseLocationMode ? "Cancel" : "Leave your message"}
+        {chooseLocationMode ? t("map.cancel") : t("map.leaveMessage")}
       </button>
     </div>
   );
