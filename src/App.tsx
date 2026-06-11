@@ -5,7 +5,13 @@ import "leaflet/dist/leaflet.css";
 import "devices.css/dist/devices.min.css";
 import BannerPage from "./pages/BannerPage/MainPage";
 
+
   const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+  const LegalPage = lazy(() => import("./pages/LegalPage/LegalPage"));
+  const GuidelinesPage = lazy(
+    () => import("./pages/GuidelinesPage/GuidelinesPage"),
+  );
+  const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage"));
 
 export default function App() {
 
@@ -16,6 +22,9 @@ export default function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/legal" element={<LegalPage />} />
+          <Route path="/guidelines" element={<GuidelinesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Suspense>
     </>

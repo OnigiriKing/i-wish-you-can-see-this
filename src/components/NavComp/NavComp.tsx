@@ -16,7 +16,7 @@ export default function NavComp() {
     <>
       <header className="relative w-full h-16 flex items-center justify-between px-20 z-50">
         <Link to="/" className="text-2xl">
-          I wish you can read this
+          I wish you could read this
         </Link>
         <div className="flex gap-6 items-center">
           <div>
