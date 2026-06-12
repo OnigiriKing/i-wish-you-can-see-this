@@ -1,7 +1,7 @@
 import allSvg from "../../../assets/svg/AllSvg";
 import MessageComp from "./SideMenu.MessageFrameComp/MessageComp";
 import type { Dispatch, SetStateAction } from "react";
-import type { Message } from "../../../assets/testData/testMessageData";
+import type { Message } from "../../../assets/types/messageType";
 import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
 import type { SelectedLocation, SideMenuMode } from "../MainComp";
 
@@ -14,7 +14,7 @@ type SideMenuProps = {
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
   sideMenuMode: SideMenuMode;
   selectedLocation: SelectedLocation | null;
-  setTestMessage: Dispatch<SetStateAction<Message[]>>;
+  setMessages: Dispatch<SetStateAction<Message[]>>;
 };
 
 export default function SideMenu({
@@ -24,7 +24,7 @@ export default function SideMenu({
   setSelectedMessageId,
   sideMenuMode,
   selectedLocation,
-  setTestMessage,
+  setMessages,
 }: SideMenuProps) {
   return (
     <div
@@ -52,7 +52,7 @@ export default function SideMenu({
               {sideMenuMode === "create" && (
                 <MessageFormComp
                   selectedLocation={selectedLocation}
-                  setTestMessage={setTestMessage}
+                  setMessages={setMessages}
                   setSideMenuState={setSideMenuState}
                 />
               )}

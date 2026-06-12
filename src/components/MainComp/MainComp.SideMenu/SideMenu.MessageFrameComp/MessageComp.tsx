@@ -1,5 +1,5 @@
 import allSvg from "../../../../assets/svg/AllSvg";
-import type { Message } from "../../../../assets/testData/testMessageData";
+import type { Message } from "../../../../assets/types/messageType";
 import { useTranslation } from "react-i18next";
 
 const datePhone = new Date().toLocaleTimeString([], {
@@ -20,13 +20,11 @@ const microphoneIcon = allSvg(22).microphoneIcon;
 const avatarIcon = allSvg(50).avatarIcon;
 
 export default function MessageComp({ selectedMessage }: MessageCompProps) {
+  const { t } = useTranslation();
 
-    const { t } = useTranslation();
-    
   if (!selectedMessage) {
     return null;
   }
-
 
   return (
     <div className="flex h-full flex-col">

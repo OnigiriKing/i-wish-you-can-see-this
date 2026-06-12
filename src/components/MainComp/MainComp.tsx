@@ -2,8 +2,7 @@ import MapComp from "./MainComp.MapComp/MapComp";
 import SideMenu from "./MainComp.SideMenu/SideMenu";
 import { useState } from "react";
 import { useEffect } from "react";
-import testMessageData from "../../assets/testData/testMessageData";
-import type { Message } from "../../assets/testData/testMessageData";
+import type { Message } from "../../assets/types/messageType";
 import { supabase } from "../../lib/supabaseClient";
 
 // additional types
@@ -22,27 +21,27 @@ export default function MainComp() {
 
   // supabase
   const [messages, setMessages] = useState<Message[]>([]);
-  
+
   useEffect(() => {
     let ignore = false;
 
-  async function getMessages() {
-    const { data, error } = await supabase.from("messages").select("*");
+    async function getMessages() {
+      const { data, error } = await supabase.from("messages").select("*");
 
-    if (error) {
-      console.error(error);
-      return;
+      if (error) {
+        console.error(error);
+        return;
+      }
+      if (!ignore) {
+        setMessages(data ?? ([] as Message[]));
+      }
     }
-    if (!ignore) {
-    setMessages((data??[] as Message[]));
-    }
-  }
 
     void getMessages();
 
     return () => {
       ignore = true;
-    }
+    };
   }, []);
 
   // create message states
@@ -52,9 +51,9 @@ export default function MainComp() {
   const [sideMenuMode, setSideMenuMode] = useState<SideMenuMode>("view");
 
   // test message data
-  const [testMessage, setTestMessage] = useState(testMessageData);
+  // const [testMessage, setTestMessage] = useState(testMessageData);
 
-  const selectedMessage = testMessage.find(
+  const selectedMessage = messages.find(
     (message) => message.id === selectedMessageId,
   );
 
@@ -67,7 +66,7 @@ export default function MainComp() {
         setSideMenuState={setSideMenuState}
         setSideMenuMode={setSideMenuMode}
         setSelectedMessageId={setSelectedMessageId}
-        testMessage={testMessage}
+        messages={messages}
       />
       <SideMenu
         sideMenuState={sideMenuState}
@@ -76,7 +75,7 @@ export default function MainComp() {
         setSelectedMessageId={setSelectedMessageId}
         sideMenuMode={sideMenuMode}
         selectedLocation={selectedLocation}
-        setTestMessage={setTestMessage}
+        setMessages={setMessages}
       />
     </div>
   );

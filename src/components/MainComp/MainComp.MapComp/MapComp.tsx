@@ -5,10 +5,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
 import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
-import type { Message } from "../../../assets/testData/testMessageData";
+import type { Message } from "../../../assets/types/messageType";
 import { useTranslation } from "react-i18next";
-
-
 
 type MapCompProps = {
   chooseLocationMode: boolean;
@@ -17,7 +15,7 @@ type MapCompProps = {
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
   setSideMenuMode: Dispatch<SetStateAction<SideMenuMode>>;
   setSelectedMessageId: Dispatch<SetStateAction<string | null>>;
-  testMessage: Message[];
+  messages: Message[];
 };
 
 const markerSvg = renderToStaticMarkup(allSvg(40).marker);
@@ -30,8 +28,6 @@ const customIcon = L.divIcon({
   popupAnchor: [0, -40],
 });
 
-
-
 export default function MapComp({
   chooseLocationMode,
   setChooseLocationMode,
@@ -39,9 +35,8 @@ export default function MapComp({
   setSideMenuState,
   setSideMenuMode,
   setSelectedMessageId,
-  testMessage,
+  messages,
 }: MapCompProps) {
-
   const { t } = useTranslation();
 
   return (
@@ -62,7 +57,7 @@ export default function MapComp({
           setSideMenuState={setSideMenuState}
           setSideMenuMode={setSideMenuMode}
         />
-        {testMessage.map((message) => (
+        {messages.map((message) => (
           <Marker
             position={[message.latitude, message.longitude]}
             key={message.id}
@@ -75,7 +70,15 @@ export default function MapComp({
                   <div>
                     {t("message.to")}: {message.receiver}
                   </div>
-                  <div>{message.date}</div>
+                  <div>
+                    {new Date(message.created_at).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+
+                      month: "long",
+
+                      year: "numeric",
+                    })}
+                  </div>
                 </div>
                 <div className="text-[15px]">
                   {message.message.length > 40

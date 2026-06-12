@@ -2,9 +2,10 @@ import allSvg from "../../../../assets/svg/AllSvg";
 import { useState } from "react";
 import type { SubmitEvent } from "react";
 import type { SelectedLocation } from "../../MainComp";
-import type { Message } from "../../../../assets/testData/testMessageData";
+import type { Message } from "../../../../assets/types/messageType";
 import type { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
+import { supabase } from "../../../../lib/supabaseClient";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
@@ -12,15 +13,9 @@ const datePhone = new Date().toLocaleTimeString([], {
   hour12: false,
 });
 
-const dateNow = new Date().toLocaleDateString("en-GB", {
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-});
-
 type MessageFormProps = {
   selectedLocation: SelectedLocation | null;
-  setTestMessage: Dispatch<SetStateAction<Message[]>>;
+  setMessages: Dispatch<SetStateAction<Message[]>>;
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
 };
 
@@ -34,7 +29,7 @@ const avatarIcon = allSvg(50).avatarIcon;
 
 export default function MessageFormComp({
   selectedLocation,
-  setTestMessage,
+  setMessages,
   setSideMenuState,
 }: MessageFormProps) {
   const { t } = useTranslation();
@@ -51,21 +46,31 @@ export default function MessageFormComp({
   const isSubmitDisabled =
     sender.trim() === "" || receiver.trim() === "" || message.trim() === "";
 
-  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (isSubmitDisabled || !selectedLocation) return;
 
     const newMessage = {
-      id: crypto.randomUUID(),
       sender: sender.trim(),
       receiver: receiver.trim(),
       message: message.trim(),
       latitude: selectedLocation.latitude,
       longitude: selectedLocation.longitude,
-      date: dateNow,
     };
-    setTestMessage((prevMessage) => [...prevMessage, newMessage]);
+
+    const { data, error } = await supabase
+      .from("messages")
+      .insert(newMessage)
+      .select()
+      .single();
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setMessages((prevMessage) => [...prevMessage, data as Message]);
 
     setSender("");
     setReceiver("");
@@ -117,7 +122,13 @@ export default function MessageFormComp({
               onChange={(e) => setReceiver(e.target.value)}
             />
           </div>
-          <p className="text-center text-xs text-zinc-500">{dateNow}</p>
+          <p className="text-center text-xs text-zinc-500">
+            {new Date().toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
         </div>
       </header>
 
