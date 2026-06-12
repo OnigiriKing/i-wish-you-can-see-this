@@ -1,7 +1,10 @@
 import MapComp from "./MainComp.MapComp/MapComp";
 import SideMenu from "./MainComp.SideMenu/SideMenu";
 import { useState } from "react";
+import { useEffect } from "react";
 import testMessageData from "../../assets/testData/testMessageData";
+import type { Message } from "../../assets/testData/testMessageData";
+import { supabase } from "../../lib/supabaseClient";
 
 // additional types
 export type SelectedLocation = {
@@ -16,6 +19,31 @@ export default function MainComp() {
   const [selectedMessageId, setSelectedMessageId] = useState<string | null>(
     null,
   );
+
+  // supabase
+  const [messages, setMessages] = useState<Message[]>([]);
+  
+  useEffect(() => {
+    let ignore = false;
+
+  async function getMessages() {
+    const { data, error } = await supabase.from("messages").select("*");
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+    if (!ignore) {
+    setMessages((data??[] as Message[]));
+    }
+  }
+
+    void getMessages();
+
+    return () => {
+      ignore = true;
+    }
+  }, []);
 
   // create message states
   const [chooseLocationMode, setChooseLocationMode] = useState(false);

@@ -1,18 +1,16 @@
 import NavComp from "./components/NavComp/NavComp";
+import BannerPage from "./pages/BannerPage/MainPage";
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import "leaflet/dist/leaflet.css";
 import "devices.css/dist/devices.min.css";
 
-import BannerPage from "./pages/BannerPage/MainPage";
-
-
-  const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
-  const LegalPage = lazy(() => import("./pages/LegalPage/LegalPage"));
-  const GuidelinesPage = lazy(
-    () => import("./pages/GuidelinesPage/GuidelinesPage"),
-  );
-  const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage"));
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+const LegalPage = lazy(() => import("./pages/LegalPage/LegalPage"));
+const GuidelinesPage = lazy(
+  () => import("./pages/GuidelinesPage/GuidelinesPage"),
+);
+const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage"));
 
 export default function App() {
 
