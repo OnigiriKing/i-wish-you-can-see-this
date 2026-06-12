@@ -57,20 +57,17 @@ export default function MessageFormComp({
       message: message.trim(),
       latitude: selectedLocation.latitude,
       longitude: selectedLocation.longitude,
+      is_approved: false,
+      is_hidden: false,
     };
 
-    const { data, error } = await supabase
-      .from("messages")
-      .insert(newMessage)
-      .select()
-      .single();
+    const { error } = await supabase.from("messages").insert(newMessage);
 
     if (error) {
       console.error(error);
       return;
     }
 
-    setMessages((prevMessage) => [...prevMessage, data as Message]);
 
     setSender("");
     setReceiver("");

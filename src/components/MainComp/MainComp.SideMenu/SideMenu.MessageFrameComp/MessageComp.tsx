@@ -47,7 +47,11 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
             {t("message.to")}: {selectedMessage.receiver}
           </p>
           <p className="text-center text-xs text-zinc-500">
-            {selectedMessage.date}
+            {new Date(selectedMessage.created_at).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })}
           </p>
         </div>
       </header>
