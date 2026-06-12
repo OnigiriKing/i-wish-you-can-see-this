@@ -19,17 +19,17 @@ export default function BannerComp() {
     <>
       {bannerState && (
         <div
-          className={`fixed inset-x-0 top-16 bottom-0 z-40 overflow-hidden bg-white text-center justify-center items-center transition-all duration-400 flex flex-col  ${
+          className={`fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top))] bottom-0 z-40 overflow-y-auto bg-white px-6 py-10 text-center transition-all duration-400 sm:top-16 ${
             isClosing ? "-translate-y-6 opacity-0" : "translate-y-0 opacity-100"
           } `}
         >
-          <div className="mx-auto w-[80%] max-w-3xl">
+          <div className="mx-auto w-full max-w-3xl py-8">
             <div>
-              <h1 className="mb-8 text-4xl font-semibold tracking-tight text-zinc-950">
+              <h1 className="mb-8 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
                 {t("banner.title")}
               </h1>
             </div>
-            <div className="flex flex-col gap-5 text-lg leading-relaxed text-zinc-700">
+            <div className="flex flex-col gap-5 text-base leading-relaxed text-zinc-700 sm:text-lg">
               <p>{t("banner.place")}</p>
               <div>
                 <p>{t("banner.feelings")}</p>
@@ -47,7 +47,7 @@ export default function BannerComp() {
               <p className="font-medium text-zinc-900">{t("banner.enough")}</p>
             </div>
             <button
-              className="text-lg mt-10 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
+              className="mt-10 cursor-pointer rounded-full border border-zinc-200 bg-white px-5 py-3 text-base text-zinc-800 shadow-lg transition hover:bg-zinc-100 sm:text-lg"
               onClick={handleCloseBanner}
             >
               {t("banner.continue")}
