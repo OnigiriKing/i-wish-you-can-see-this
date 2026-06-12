@@ -40,7 +40,7 @@ export default function MapComp({
   const { t } = useTranslation();
 
   return (
-    <div className="relative h-[calc(100vh-4rem)] w-full z-10">
+    <div className="relative z-10 h-full w-full overflow-hidden">
       <MapContainer
         center={[35.6762, 139.6503]}
         zoom={3}
@@ -104,7 +104,7 @@ export default function MapComp({
         ))}
       </MapContainer>
       <button
-        className="absolute bottom-6 left-1/2 z-1000 -translate-x-1/2 rounded-full border  px-5 py-3  shadow-lg cursor-pointer bg-white text-zinc-800 transition hover:bg-zinc-100 border-zinc-200"
+        className="absolute bottom-[calc(env(safe-area-inset-bottom)+5.5rem)] left-1/2 z-1000 -translate-x-1/2 cursor-pointer rounded-full border border-zinc-200 bg-white px-5 py-3 text-zinc-800 shadow-lg transition hover:bg-zinc-100 sm:bottom-6"
         onClick={() => {
           if (chooseLocationMode) {
             setChooseLocationMode(false);

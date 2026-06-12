@@ -58,7 +58,7 @@ export default function MainComp() {
   );
 
   return (
-    <div className="relative flex overflow-hidden">
+    <div className="relative flex h-[calc(100dvh_-_4rem_-_env(safe-area-inset-top))] overflow-hidden">
       <MapComp
         chooseLocationMode={chooseLocationMode}
         setChooseLocationMode={setChooseLocationMode}
