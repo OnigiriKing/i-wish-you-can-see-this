@@ -29,7 +29,6 @@ const avatarIcon = allSvg(50).avatarIcon;
 
 export default function MessageFormComp({
   selectedLocation,
-  setMessages,
   setSideMenuState,
 }: MessageFormProps) {
   const { t } = useTranslation();
