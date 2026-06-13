@@ -38,7 +38,7 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
             <div>{batteryIcon}</div>
           </div>
         </div>
-        <div className="mt-3 justify-center items-center text-center flex flex-col gap-1">
+        <div className="mt-3 justify-center items-center text-center flex flex-col gap-1 text-lg">
           <div className="text-[#8A94A6]">{avatarIcon}</div>
           <p className="text-center font-semibold">
             {t("message.from")}: {selectedMessage.sender}
@@ -46,7 +46,7 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
           <p className="text-center font-semibold">
             {t("message.to")}: {selectedMessage.receiver}
           </p>
-          <p className="text-center text-xs text-zinc-500">
+          <p className="text-center text-zinc-500">
             {new Date(selectedMessage.created_at).toLocaleDateString("en-GB", {
               day: "2-digit",
               month: "long",
@@ -57,7 +57,7 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
       </header>
 
       <main className="flex flex-col flex-1 p-4 justify-end my-4">
-        <div className="ml-auto max-w-[80%] rounded-3xl bg-[#007AFF] px-4 py-3 text-white rounded-br-md mb-6">
+        <div className="ml-auto max-w-[80%] rounded-3xl bg-[#007AFF] px-4 py-3 text-lg text-white rounded-br-md mb-6">
           {selectedMessage.message}
         </div>
         <div className="flex flex-row gap-2 mx-1">
