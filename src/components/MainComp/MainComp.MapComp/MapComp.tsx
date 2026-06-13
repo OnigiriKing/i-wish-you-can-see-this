@@ -39,12 +39,21 @@ export default function MapComp({
 }: MapCompProps) {
   const { t } = useTranslation();
 
+  const worldBounds: [[number, number], [number, number]] = [
+    [-85, -170],
+    [85, 200],
+  ];
+
   return (
     <div className="relative z-10 h-full w-full overflow-hidden">
       <MapContainer
         center={[35.6762, 139.6503]}
         zoom={3}
-        className={`h-full w-full`}
+        minZoom={3}
+        maxBounds={worldBounds}
+        maxBoundsViscosity={1.0}
+        worldCopyJump={false}
+        className="h-full w-full"
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
