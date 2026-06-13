@@ -1,12 +1,12 @@
-
+/* 
 
 .device.device-iphone-14-pro .device-frame {
   border-color: #5e5a57;
   box-shadow:
-    inset 0 0 4px 2px #f0efef,
-    inset 0 0 0 6px #76726f,
-    0 20px 40px rgba(0, 0, 0, 0.15);
-}
+    inset 0 0 4px 2px #3a3a3a,
+    inset 0 0 0 6px #111111,
+    0 20px 40px rgba(0, 0, 0, 0.18);
+} */
 
 .device .flex {
   display: flex;
@@ -23,10 +23,10 @@
 .device .hidden {
   display: none;
 }
-
+/* 
 .device.device-iphone-14-pro .device-btns,
 .device.device-iphone-14-pro .device-btns::before,
 .device.device-iphone-14-pro .device-btns::after,
 .device.device-iphone-14-pro .device-power {
-  background: #5e5a57;
-}
+  background: #111111;
+} */

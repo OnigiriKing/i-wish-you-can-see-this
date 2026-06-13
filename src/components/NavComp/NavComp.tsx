@@ -18,7 +18,7 @@ export default function NavComp() {
 
   return (
     <>
-      <header className="relative w-full h-16 flex items-center sm:justify-between px-30 z-50 justify-center">
+      <header className="relative w-full h-16 flex items-center sm:justify-between px-30 z-50 justify-center bg-zinc-50">
         <Link to="/" className="text-2xl hidden sm:block">
           {t("nav.title")}
         </Link>
@@ -47,23 +47,23 @@ export default function NavComp() {
               </div>
             )}
           </div>
-<div className="relative flex items-center">
-          <button
-            type="button"
-            className={`items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
-            onClick={() => {
-              setDropMenuState((dropMenuState) => !dropMenuState);
-            }}
-          >
-            {dropMenu}
-          </button>
-          {dropMenuState && (
+          <div className="relative flex items-center">
+            <button
+              type="button"
+              className={`items-center ease-in-out duration-300 cursor-pointer hover:text-zinc-400 ${dropMenuState ? "rotate-90" : ""}`}
+              onClick={() => {
+                setDropMenuState((dropMenuState) => !dropMenuState);
+              }}
+            >
+              {dropMenu}
+            </button>
+            {dropMenuState && (
               <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2">
-                <DropMenu setDropMenuState={setDropMenuState}  />
+                <DropMenu setDropMenuState={setDropMenuState} />
               </div>
             )}
-          <div />
-        </div>
+            <div />
+          </div>
         </div>
       </header>
     </>

@@ -28,7 +28,7 @@ export default function SideMenu({
 }: SideMenuProps) {
   return (
     <div
-      className={`absolute inset-0 z-40 flex w-full items-start justify-center overflow-y-auto bg-white px-4 py-8 transition-transform duration-300 ease-in-out lg:inset-y-0 lg:right-0 lg:left-auto lg:w-105 lg:px-0 lg:py-0 ${sideMenuState ? "translate-x-0" : "translate-x-full"}`}
+      className={`absolute inset-0 z-40 flex w-full items-start justify-center overflow-y-auto bg-zinc-50 px-4 py-8 transition-transform duration-300 ease-in-out lg:inset-y-0 lg:right-0 lg:left-auto lg:w-105 lg:px-0 lg:py-0 ${sideMenuState ? "translate-x-0" : "translate-x-full"}`}
     >
       <button
         className="absolute left-5 top-5 z-50 cursor-pointer transition duration-300 ease-in-out hover:text-zinc-400"
