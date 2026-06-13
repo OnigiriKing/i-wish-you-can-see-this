@@ -8,7 +8,8 @@
   "map": {
     "openMessage": "メッセージを開く",
     "cancel": "キャンセル",
-    "leaveMessage": "メッセージを残す"
+    "leaveMessage": "メッセージを残す",
+    "submitted": "メッセージを送信しました。ありがとうございます。"
   },
   "banner": {
     "title": "I wish you could read this.",

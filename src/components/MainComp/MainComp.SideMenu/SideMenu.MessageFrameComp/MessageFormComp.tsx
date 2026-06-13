@@ -37,6 +37,9 @@ export default function MessageFormComp({
   const [receiver, setReceiver] = useState("");
   const [message, setMessage] = useState("");
 
+  // message successful state
+  const [showSubmitToast, setShowSubmitToast] = useState(false);
+
   function resizeTextarea(textarea: HTMLTextAreaElement) {
     textarea.style.height = "auto";
     textarea.style.height = `${Math.min(textarea.scrollHeight, 512)}px`;
@@ -67,15 +70,30 @@ export default function MessageFormComp({
       return;
     }
 
-
+    // reset message
     setSender("");
     setReceiver("");
     setMessage("");
 
-    setSideMenuState(false);
+    // show popup
+    setShowSubmitToast(true);
+
+    window.setTimeout(() => {
+      // delete popup
+      setShowSubmitToast(false);
+      // close side menu
+      setSideMenuState(false);
+    }, 1600);
   }
+
   return (
-    <form className="flex h-full flex-col" onSubmit={handleSubmit}>
+    <form className="relative flex h-full flex-col" onSubmit={handleSubmit}>
+      {/* popup message */}
+      {showSubmitToast && (
+        <div className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-zinc-950 px-5 py-3 text-center text-lg font-medium text-white shadow-xl">
+          {t("map.submitted")}
+        </div>
+      )}
       {/* actual text content */}
       <header className="border-b border-zinc-200 p-4">
         <div className="mx-4 flex flex-row justify-between items-center align-middle">
@@ -89,7 +107,7 @@ export default function MessageFormComp({
         <div className="mt-3 justify-center items-center text-center flex flex-col gap-1">
           <div className="text-[#8A94A6]">{avatarIcon}</div>
           {/* from field */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 text-lg">
             <label className="text-center font-semibold">
               {t("message.from")}:
             </label>
@@ -104,7 +122,7 @@ export default function MessageFormComp({
             />
           </div>
           {/* to field */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 text-lg">
             <label className="text-center font-semibold">
               {t("message.to")}:
             </label>
@@ -118,7 +136,7 @@ export default function MessageFormComp({
               onChange={(e) => setReceiver(e.target.value)}
             />
           </div>
-          <p className="text-center text-xs text-zinc-500">
+          <p className="text-center text-zinc-500">
             {new Date().toLocaleDateString("en-GB", {
               day: "2-digit",
               month: "long",
@@ -130,12 +148,12 @@ export default function MessageFormComp({
 
       <main className="flex flex-col flex-1 p-4 justify-end my-4">
         <div className="flex flex-row gap-2 mx-1 items-end">
-          <div className="p-1.5 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
+          <div className="p-2 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
             {crossButton}
           </div>
           <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm ">
             <textarea
-              className="w-full rounded-4xl px-4 outline-none placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
+              className="w-full rounded-4xl px-4 outline-none text-lg placeholder:text-gray-400 overflow-y-auto resize-none bg-transparent"
               rows={1}
               placeholder="iMessage"
               required
@@ -152,7 +170,7 @@ export default function MessageFormComp({
               <button
                 type="submit"
                 disabled={isSubmitDisabled}
-                className={`px-1.5 text-white self-end rounded-3xl max-h-6 ${isSubmitDisabled ? "cursor-not-allowed bg-gray-400" : "bg-[#007AFF] cursor-pointer"}`}
+                className={`px-2 text-white self-end rounded-3xl max-h-7 h-7 ${isSubmitDisabled ? "cursor-not-allowed bg-gray-400" : "bg-[#007AFF] cursor-pointer"}`}
               >
                 {arrowUpIcon}
               </button>

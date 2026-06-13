@@ -8,7 +8,9 @@
   "map": {
     "openMessage": "Open message",
     "cancel": "Cancel",
-    "leaveMessage": "Leave your message"
+    "leaveMessage": "Leave your message",
+    "submitted": "Message submitted. Thank you."
+
   },
   "banner": {
     "title": "I wish you could read this.",

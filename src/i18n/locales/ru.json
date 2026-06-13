@@ -8,7 +8,8 @@
   "map": {
     "openMessage": "Открыть сообщение",
     "cancel": "Отмена",
-    "leaveMessage": "Оставить сообщение"
+    "leaveMessage": "Оставить сообщение",
+    "submitted": "Сообщение отправлено. Спасибо."
   },
   "banner": {
     "title": "I wish you could read this.",
