@@ -41,7 +41,7 @@ export default function ContactComp() {
   }
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-white px-6 py-16 text-zinc-900">
+    <main className="min-h-[calc(100vh-4rem)] bg-zinc-50 px-6 py-16 text-zinc-900">
       <section className="mx-auto max-w-3xl">
         <Link
           to="/"
@@ -67,12 +67,8 @@ export default function ContactComp() {
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("contact.beforeTitle")}
             </h2>
-            <p>
-              {t("contact.beforeText")}
-            </p>
-            <p className="mt-4">
-              {t("contact.crisisText")}
-            </p>
+            <p>{t("contact.beforeText")}</p>
+            <p className="mt-4">{t("contact.crisisText")}</p>
           </section>
 
           <form

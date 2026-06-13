@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 export default function LegalComp() {
   const { t } = useTranslation();
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-white px-6 py-16 text-zinc-900">
+    <main className="min-h-[calc(100vh-4rem)] bg-zinc-50 px-6 py-16 text-zinc-900">
       <section className="mx-auto max-w-3xl">
         <Link
           to="/"
@@ -30,81 +30,63 @@ export default function LegalComp() {
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.aboutTitle")}
             </h2>
-            <p>
-              {t("legal.aboutText")}
-            </p>
+            <p>{t("legal.aboutText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.publicTitle")}
             </h2>
-            <p>
-              {t("legal.publicText")}
-            </p>
+            <p>{t("legal.publicText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.collectTitle")}
             </h2>
-            <p>
-              {t("legal.collectText")}
-            </p>
+            <p>{t("legal.collectText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.useTitle")}
             </h2>
-            <p>
-              {t("legal.useText")}
-            </p>
+            <p>{t("legal.useText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.moderationTitle")}
             </h2>
-            <p>
-              {t("legal.moderationText")}
-            </p>
+            <p>{t("legal.moderationText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.responsibilityTitle")}
             </h2>
-            <p>
-              {t("legal.responsibilityText")}
-            </p>
+            <p>{t("legal.responsibilityText")}</p>
           </section>
 
           <section className="rounded-3xl border border-zinc-200 px-6 py-6">
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.crisisTitle")}
             </h2>
-            <p>
-              {t("legal.crisisText")}
-            </p>
+            <p>{t("legal.crisisText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.changesTitle")}
             </h2>
-            <p>
-              {t("legal.changesText")}
-            </p>
+            <p>{t("legal.changesText")}</p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-zinc-950">
               {t("legal.contactTitle")}
             </h2>
-            <p>
-              {t("legal.contactText")}
-            </p>
+            <p>{t("legal.contactText")}</p>
           </section>
         </div>
       </section>
