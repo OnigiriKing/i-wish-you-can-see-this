@@ -55,7 +55,6 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
           </p>
         </div>
       </header>
-
       <main className="flex flex-col flex-1 p-4 justify-end my-4">
         <div className="ml-auto max-w-[80%] rounded-3xl bg-[#007AFF] px-4 py-3 text-lg text-white rounded-br-md mb-6">
           {selectedMessage.message}
