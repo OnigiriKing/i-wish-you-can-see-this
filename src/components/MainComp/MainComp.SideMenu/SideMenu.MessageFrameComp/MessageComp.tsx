@@ -63,6 +63,7 @@ export default function MessageComp({ selectedMessage }: MessageCompProps) {
           <div className="p-1.5 rounded-4xl bg-gray-100 rotate-45 shadow-sm flex justify-center items-center ">
             {crossButton}
           </div>
+
           <div className="p-1.5 rounded-4xl bg-gray-100 flex w-full shadow-sm">
             <div className="mx-2 flex justify-between w-full text-gray-400">
               <div className="cursor-default">iMessage</div>

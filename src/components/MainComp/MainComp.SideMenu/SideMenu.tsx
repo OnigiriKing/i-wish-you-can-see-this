@@ -5,7 +5,8 @@ import type { Message } from "../../../assets/types/messageType";
 import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
 import type { SelectedLocation, SideMenuMode } from "../MainComp";
 
-const crossButton = allSvg(30).crossButton;
+const crossButton = allSvg(35).crossButton;
+const reportButton = allSvg(45).reportIcon;
 
 type SideMenuProps = {
   sideMenuState: boolean;
@@ -38,6 +39,12 @@ export default function SideMenu({
         }}
       >
         {crossButton}
+      </button>
+      <button
+        className="absolute right-5 top-5 z-50 cursor-pointer transition duration-300 ease-in-out hover:text-zinc-400"
+        onClick={() => {}}
+      >
+        {reportButton}
       </button>
       <div className="phone-device-wrapper">
         <div className="device device-iphone-14-pro sm:my-15">
