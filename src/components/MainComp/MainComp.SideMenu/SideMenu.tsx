@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from "react";
 import type { Message } from "../../../assets/types/messageType";
 import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
 import type { SelectedLocation, SideMenuMode } from "../MainComp";
+import { supabase } from "../../../lib/supabaseClient";
 
 const crossButton = allSvg(35).crossButton;
 const reportButton = allSvg(45).reportIcon;
@@ -18,6 +19,7 @@ type SideMenuProps = {
   setMessages: Dispatch<SetStateAction<Message[]>>;
 };
 
+
 export default function SideMenu({
   sideMenuState,
   setSideMenuState,
@@ -27,6 +29,31 @@ export default function SideMenu({
   selectedLocation,
   setMessages,
 }: SideMenuProps) {
+
+
+async function handleReport() {
+
+    if (!selectedMessage) return;
+
+    const confirmed = window.confirm("Report this message?");
+
+    if (!confirmed) return;
+
+    const newReport = {
+      message_id: selectedMessage.id,
+    };
+
+    const { error } = await supabase.from("message_reports").insert(newReport);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+    alert("Thank you. This message was reported.");
+  }
+
+
+
   return (
     <div
       className={`absolute inset-0 z-40 flex w-full items-start justify-center overflow-y-auto bg-zinc-50 px-4 py-8 transition-transform duration-300 ease-in-out lg:inset-y-0 lg:right-0 lg:left-auto lg:w-105 lg:px-0 lg:py-0 ${sideMenuState ? "translate-x-0" : "translate-x-full"}`}
@@ -42,7 +69,7 @@ export default function SideMenu({
       </button>
       <button
         className="absolute right-5 top-5 z-50 cursor-pointer transition duration-300 ease-in-out hover:text-zinc-400"
-        onClick={() => {}}
+        onClick={handleReport}
       >
         {reportButton}
       </button>
