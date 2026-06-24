@@ -67,12 +67,12 @@ async function handleReport() {
       >
         {crossButton}
       </button>
-      <button
+      {selectedMessage ? ( <button
         className="absolute right-5 top-5 z-50 cursor-pointer transition duration-300 ease-in-out hover:text-zinc-400"
         onClick={handleReport}
       >
         {reportButton}
-      </button>
+      </button>):""}
       <div className="phone-device-wrapper">
         <div className="device device-iphone-14-pro sm:my-15">
           <div className="device-frame">
