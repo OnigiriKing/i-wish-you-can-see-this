@@ -2,7 +2,6 @@ import allSvg from "../../../../assets/svg/AllSvg";
 import { useState } from "react";
 import type { SubmitEvent } from "react";
 import type { SelectedLocation } from "../../MainComp";
-import type { Message } from "../../../../assets/types/messageType";
 import type { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -15,7 +14,6 @@ const datePhone = new Date().toLocaleTimeString([], {
 
 type MessageFormProps = {
   selectedLocation: SelectedLocation | null;
-  setMessages: Dispatch<SetStateAction<Message[]>>;
   setSideMenuState: Dispatch<SetStateAction<boolean>>;
 };
 
