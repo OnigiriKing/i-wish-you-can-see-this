@@ -1,5 +1,5 @@
 // server
-const expresss = require("express");
+const express = require("express");
 // security
 const cors = require("cors");
 // access to .env
@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const app = expresss();
+const app = express();
 const port = process.env.PORT;
 
 app.use(cors());
