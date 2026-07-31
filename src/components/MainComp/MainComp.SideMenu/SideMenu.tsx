@@ -4,7 +4,6 @@ import type { Dispatch, SetStateAction } from "react";
 import type { Message } from "../../../assets/types/messageType";
 import MessageFormComp from "./SideMenu.MessageFrameComp/MessageFormComp";
 import type { SelectedLocation, SideMenuMode } from "../MainComp";
-import { supabase } from "../../../lib/supabaseClient";
 
 const crossButton = allSvg(35).crossButton;
 const reportButton = allSvg(45).reportIcon;
@@ -38,13 +37,22 @@ export default function SideMenu({
       message_id: selectedMessage.id,
     };
 
-    const { error } = await supabase.from("message_reports").insert(newReport);
+    try {
+      const response = await fetch("/.netlify/functions/reports", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newReport),
+      });
 
-    if (error) {
+      if (!response.ok) {
+        throw new Error(`Failed to report message: ${response.status}`);
+      }
+      alert("Thank you. This message was reported.");
+    } catch (error) {
       console.error(error);
-      return;
     }
-    alert("Thank you. This message was reported.");
   }
 
   return (

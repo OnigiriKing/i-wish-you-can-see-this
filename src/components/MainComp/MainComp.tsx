@@ -25,18 +25,19 @@ export default function MainComp() {
     let ignore = false;
 
     async function getMessages() {
-      const response = await fetch("/.netlify/functions/messages");
+      try {
+        const response = await fetch("/.netlify/functions/messages");
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch messages: ${response.status}`);
-      }
-      const data: Message[] = await response.json();
+        if (!response.ok) {
+          throw new Error(`Failed to fetch messages: ${response.status}`);
+        }
+        const data: Message[] = await response.json();
 
-      if (!ignore) {
-        setMessages(data);
-      }
-      if (Error) {
-        console.log(Error);
+        if (!ignore) {
+          setMessages(data);
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
 

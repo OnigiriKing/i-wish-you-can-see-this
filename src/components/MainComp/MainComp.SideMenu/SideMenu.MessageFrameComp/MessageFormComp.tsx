@@ -4,7 +4,6 @@ import type { SubmitEvent } from "react";
 import type { SelectedLocation } from "../../MainComp";
 import type { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
-import { supabase } from "../../../../lib/supabaseClient";
 
 const datePhone = new Date().toLocaleTimeString([], {
   hour: "2-digit",
@@ -61,27 +60,36 @@ export default function MessageFormComp({
       is_hidden: false,
     };
 
-    const { error } = await supabase.from("messages").insert(newMessage);
+    try {
+      const response = await fetch("/.netlify/functions/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMessage),
+      });
 
-    if (error) {
+      if (!response.ok) {
+        throw new Error(`Failed to post a message: ${response.status}`);
+      }
+
+      // reset message
+      setSender("");
+      setReceiver("");
+      setMessage("");
+
+      // show popup
+      setShowSubmitToast(true);
+
+      window.setTimeout(() => {
+        // delete popup
+        setShowSubmitToast(false);
+        // close side menu
+        setSideMenuState(false);
+      }, 1600);
+    } catch (error) {
       console.error(error);
-      return;
     }
-
-    // reset message
-    setSender("");
-    setReceiver("");
-    setMessage("");
-
-    // show popup
-    setShowSubmitToast(true);
-
-    window.setTimeout(() => {
-      // delete popup
-      setShowSubmitToast(false);
-      // close side menu
-      setSideMenuState(false);
-    }, 1600);
   }
 
   return (

@@ -4,7 +4,7 @@ import allSvg from "../../../assets/svg/AllSvg";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { Dispatch, SetStateAction } from "react";
 import type { SideMenuMode, SelectedLocation } from "../MainComp";
-import LocationPickEvent from "./MapCompFunctions/LocationPickEvent";
+import LocationPickEvent from "./MapComp.Functions/LocationPickEvent";
 import type { Message } from "../../../assets/types/messageType";
 import { useTranslation } from "react-i18next";
 
