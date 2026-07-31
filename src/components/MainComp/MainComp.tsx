@@ -3,7 +3,6 @@ import SideMenu from "./MainComp.SideMenu/SideMenu";
 import { useState } from "react";
 import { useEffect } from "react";
 import type { Message } from "../../assets/types/messageType";
-import { supabase } from "../../lib/supabaseClient";
 
 // additional types
 export type SelectedLocation = {
@@ -26,14 +25,18 @@ export default function MainComp() {
     let ignore = false;
 
     async function getMessages() {
-      const { data, error } = await supabase.from("messages").select("*");
+      const response = await fetch("/.netlify/functions/messages");
 
-      if (error) {
-        console.error(error);
-        return;
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status}`);
       }
+      const data: Message[] = await response.json();
+
       if (!ignore) {
-        setMessages(data ?? ([] as Message[]));
+        setMessages(data);
+      }
+      if (Error) {
+        console.log(Error);
       }
     }
 
