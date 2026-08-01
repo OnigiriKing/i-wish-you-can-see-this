@@ -1,10 +1,17 @@
-import pool from "./db.js";
+import pool from "../shared/db.js";
 
 export async function handler() {
-  const result = await pool.query("SELECT * FROM message_reports");
+  const { message_id } = JSON.parse(event.body || "{}");
+
+  const result = await pool.query(
+    `INSERT INTO message_reports (message_id)
+   VALUES ($1)
+   RETURNING *`,
+    [message_id],
+  );
 
   return {
-    statusCode: 200,
-    body: JSON.stringify(result.rows),
+    statusCode: 201,
+    body: JSON.stringify(result.rows[0]),
   };
 }
