@@ -1,4 +1,4 @@
-import pool from "../shared/db.js";
+import {pool} from "../shared/db.js";
 
 export async function handler(event) {
   const { message_id } = JSON.parse(event.body || "{}");
