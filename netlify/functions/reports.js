@@ -1,6 +1,6 @@
 import pool from "../shared/db.js";
 
-export async function handler() {
+export async function handler(event) {
   const { message_id } = JSON.parse(event.body || "{}");
 
   const result = await pool.query(

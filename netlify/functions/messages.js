@@ -1,6 +1,6 @@
 import pool from "../shared/db.js";
 
-export async function handler() {
+export async function handler(event) {
   try {
     if (event.httpMethod === "GET") {
       const result = await pool.query(
